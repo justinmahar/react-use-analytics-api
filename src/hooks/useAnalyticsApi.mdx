@@ -1,0 +1,116 @@
+---
+name: useAnalyticsApi
+menu: Hooks
+route: /useAnalyticsApi
+---
+
+import { UseAnalyticsApiExample } from '../__docz__/components/UseAnalyticsApiExample';
+import { useAnalyticsApi } from './useAnalyticsApi';
+
+<h1>useAnalyticsApi</h1>
+
+## Description
+
+Use this hook to load and access the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) (`gapi`).
+
+The hook will run the [library loading script from Google](https://developers.google.com/analytics/devguides/reporting/embed/v1/getting-started#step-2), grab the API out from `window.gapi` (where Google loads it to), and store it as a singleton. 
+It will reference the singleton thereafter, keeping `window` interaction to a minimum. 
+
+State changes that happen outside of React (such as API readiness and [authorization](/useAuthorize)) are synchronized across all hooks via a singleton emitter effect. This allows you to use the hook in multiple places while keeping them all in sync.
+
+## Usage
+
+```jsx
+import { useAnalyticsApi } from '@devboldly/react-use-analytics-api';
+```
+
+Then in your function component: 
+
+```jsx
+const { ready, gapi, authorized, error } = useAnalyticsApi();
+```
+
+When `ready` is `true`, the `gapi` object will be set to the loaded and ready-to-use [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/). The `gapi` object will be `undefined` until it is ready to use.
+
+The `authorized` property will be `true` when the user is authorized, `false` otherwise. If you authorize via the [`useAuthorize`](/useAuthorize) hook, this property will be updated for all `useAnalyticsApi` hooks. Otherwise, it will be set to the last known value when the hook was instantiated.
+
+If something goes wrong, `error` will tell you what happened.
+
+### Using The API Itself
+
+Changes via the `gapi` API happen outside of the React ecosystem and often need to occur after rendering is completed. 
+For instance, when [rendering a chart](/useDataChart) via the API, content is injected directly into a DOM element. That DOM element must be fully rendered or else you'll get an error.
+
+Therefore, any time you interact with `gapi`, it should be [treated as a side-effect](https://reactjs.org/docs/hooks-effect.html).
+
+For convenience, this library includes several helper hooks for common tasks that simplify safe API usage:
+
+- [useAuthorize](/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
+- [useViewSelector](/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
+- [useDataChart](/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
+- [useSignOut](/useSignOut) - Sign the user out
+
+If you need to do anything with the API outside of these operations, be sure to [use an effect](https://reactjs.org/docs/hooks-effect.html) and do cleanup where appropriate.
+
+## Signature
+
+`useAnalyticsApi() => { ready: boolean; gapi?: GoogleAnalyticsEmbedAPI; authorized: boolean; error?: Error; }`
+
+### Arguments
+
+The hook takes no arguments.
+
+### Return
+
+The hook returns an object containing:
+
+| Property | Type | Description |
+|-------|------|-------------|
+| ready | boolean | `true` when the Google Analytics Embed API is ready to use, `false` otherwise. |
+| gapi | [GoogleAnalyticsEmbedAPI](https://developers.google.com/analytics/devguides/reporting/embed/v1) &#124; undefined | The [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/). This will be `undefined` until the analytics API is fully loaded and ready. |
+| authorized | boolean | `true` if the user is authorized, `false` otherwise. If you authorize via the [`useAuthorize`](/useAuthorize) hook, this property will be updated for all `useAnalyticsApi` hooks. Otherwise, it will be set to the last known value when the hook was instantiated. |
+| error | [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) &#124; undefined | When not `undefined`, this indicates an error loading the API. |
+
+## Example
+
+The following demonstrates loading the Google Analytics Embed API and showing whether the user is authorized.
+
+See the [useAuthorize hook example](/useAuthorize#example) to test logging in and out, and see the [useDataChart hook example](/useDataChart#example) for a full demo of everything this library offers.
+
+<div style={{ border: 'solid 2px #67788a', padding: '20px' }}>
+  <UseAnalyticsApiExample />
+</div>
+
+```jsx
+import * as React from 'react';
+import { useAnalyticsApi } from '@devboldly/react-use-analytics-api';
+
+export function UseAnalyticsApiExample() {
+  const { ready, gapi, authorized, error } = useAnalyticsApi();
+  if (error) {
+    console.error(error);
+  }
+  return (
+    <div>
+      {!error &&
+        (ready && !!gapi ? (
+          <>
+            <div>✔️ Loaded and ready to use!</div>
+            {authorized && <div>☀️ Logged into Google Analytics!</div>}
+            {!authorized && <div>🔐 Not logged into Google Analytics</div>}
+          </>
+        ) : (
+          <div>⌛ Loading...</div>
+        ))}
+      {error && (
+        <div>
+          <div style={{ fontSize: '120%' }}>❌ Error</div>
+          <hr style={{ border: 0, borderTop: 'solid 1px rosybrown' }} />
+          <p>{error.toString()}</p>
+          <p>See the console for more information.</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```

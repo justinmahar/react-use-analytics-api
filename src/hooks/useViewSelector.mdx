@@ -1,0 +1,119 @@
+---
+name: useViewSelector
+menu: Hooks
+route: /useViewSelector
+---
+
+import { UseViewSelectorExample } from '../__docz__/components/UseViewSelectorExample';
+import { useViewSelector } from './useViewSelector';
+
+<h1>useViewSelector</h1>
+
+## Description
+
+This hook renders a [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector) 
+into a container on the page using the [Google Analytics Embed API](/useAnalyticsApi).
+
+The view selector can be used to change the Google Analytics view for data queries when [rendering charts](/useDataChart).
+
+## Usage
+
+```jsx
+import { useViewSelector } from '@devboldly/react-use-analytics-api';
+```
+
+In your function component:
+
+```jsx
+const [viewId, setViewId] = React.useState();
+useViewSelector(gapi, 'my-view-selector-container', viewId => setViewId(viewId));
+```
+
+Provide the hook with the loaded [Google Analytics Embed API](/useAnalyticsApi) (`gapi`), the ID of the container DOM element to render to, 
+and a callback for when the view changes.
+
+If `gapi` is `undefined`, nothing will be rendered.
+
+## Signature
+
+`useViewSelector( gapi?: GoogleAnalyticsEmbedAPI, viewSelectorId: string, onChange: (viewId: string) => void)) => void`
+
+### Arguments
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| gapi | `GoogleAnalyticsEmbedAPI` &#124; `undefined` | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, nothing is rendered. |
+| viewSelectorId | `string` | The ID of the DOM element to render the view selector to. |
+| onChange | `(viewId: string) => void` | Called with the selected `viewId` whenever the view selection changes. Will be called immediately. |
+
+### Return
+
+`void` - The hook has no return.
+
+## Example
+
+The following example shows use of a view selector to display the selected Google Analytics view ID. 
+
+This example includes full auth flow as well.
+
+<div style={{ border: 'solid 2px #67788a', padding: '20px' }}>
+  <UseViewSelectorExample />
+</div>
+
+```jsx
+import * as React from 'react';
+import { useAnalyticsApi, useAuthorize, useSignOut, useViewSelector } from '../../hooks/useViewSelector';
+
+export function UseViewSelectorExample(props) {
+  const { ready, gapi, authorized, error } = useAnalyticsApi();
+  const [viewId, setViewId] = React.useState();
+  const viewSelectorContainerId = 'view-selector-container';
+  useViewSelector(authorized ? gapi : undefined, viewSelectorContainerId, viewId => setViewId(viewId));
+
+  // Workaround for API limitation - see useAuthorize docs
+  const authDiv = React.useRef(null);
+  const [authorizeCalled, setAuthorizeCalled] = React.useState(false);
+  const hasAuthElements = authDiv.current && authDiv?.current?.children?.length > 0;
+
+  const authorize = useAuthorize(gapi, {
+    clientId: props.clientId,
+    container: 'authorize-container-id',
+  });
+  const signOut = useSignOut(gapi);
+
+  React.useEffect(() => {
+    if (ready && !error && !authorizeCalled) {
+      authorize();
+      setAuthorizeCalled(true);
+    }
+  }, [ready, error, authorizeCalled, authorize]);
+
+  return (
+    <div>
+      {!ready && <div>Loading...</div>}
+      {ready && (
+        <div>
+          {authorized && (
+            <div>
+              <div style={{ fontSize: '200%' }}>
+                View ID: <span style={{ border: 'solid 3px orange', padding: '5px' }}>{viewId}</span>
+              </div>
+              <div id={viewSelectorContainerId} />
+              <div>
+                <button onClick={() => signOut()}>Sign Out</button>
+              </div>
+            </div>
+          )}
+          {!authorized && (
+            <div>
+              <div ref={authDiv} id="authorize-container-id"></div>
+              {!hasAuthElements && <div>🔄 Refresh the page to sign in.</div>}
+            </div>
+          )}
+        </div>
+      )}
+      {error && <div>{error.toString()}</div>}
+    </div>
+  );
+}
+```

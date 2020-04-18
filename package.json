@@ -1,9 +1,9 @@
 {
-  "name": "@devboldly/react-library-starter",
-  "version": "0.0.0",
+  "name": "@devboldly/react-use-google-analytics-embed-api",
+  "version": "0.0.44",
   "author": "Dev Boldly <devboldly@gmail.com>",
-  "description": "A template to build, test, and share React components and hooks easily. Uses Storybook, Jest, and more.",
-  "homepage": "https://github.com/devboldly/react-library-starter#readme",
+  "description": "React hook for loading the Google Analytics Embed API.",
+  "homepage": "https://github.com/devboldly/react-use-analytics-api#readme",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -24,16 +24,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devboldly/react-library-starter.git"
+    "url": "git+https://github.com/devboldly/react-use-analytics-api.git"
   },
   "bugs": {
-    "url": "https://github.com/devboldly/react-library-starter/issues"
+    "url": "https://github.com/devboldly/react-use-analytics-api/issues"
   },
   "keywords": [],
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
@@ -53,7 +53,7 @@
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "babel-loader": "^8.0.6",
-    "docz": "^2.2.0",
+    "docz": "^2.3.1",
     "eslint": "^6.8.0",
     "eslint-plugin-json": "^2.1.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -62,10 +62,9 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-helmet": "^6.0.0-beta.2",
+    "react-helmet": "^6.0.0",
     "react-test-renderer": "^16.13.0",
+    "styled-components": "^5.1.0",
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.3"

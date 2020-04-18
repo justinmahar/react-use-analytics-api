@@ -1,0 +1,101 @@
+---
+name: useSignOut
+menu: Hooks
+route: /useSignOut
+---
+
+import { UseAuthorizeExample } from '../__docz__/components/UseAuthorizeExample';
+import { useSignOut } from './useSignOut';
+
+<h1>useSignOut</h1>
+
+## Description
+
+This hook returns a `signOut` function that can be used to sign the user out of Google Analytics via the [Google Analytics Embed API](/useAnalyticsApi).
+
+## Usage
+
+```jsx
+import { signOut } from '@devboldly/react-use-analytics-api';
+```
+
+In your function component:
+
+```jsx
+const signOut = useSignOut(gapi);
+```
+
+Provide the hook with `gapi`, the [Google Analytics Embed API](/useAnalyticsApi). Call `signOut` to sign the user out.
+
+## Signature
+
+`useSignOut(gapi?: GoogleAnalyticsEmbedAPI) => (() => void)`
+
+### Arguments
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| gapi | `GoogleAnalyticsEmbedAPI` &#124; `undefined` | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, calling `signOut` does nothing. |
+
+### Return
+
+The hook returns a function, `signOut`.
+
+```jsx
+signOut() => void
+```
+
+When `gapi` is not `undefined`, this function calls [`gapi.auth.signOut`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) to sign the user out of Google Analytics.
+
+## Example
+
+<div style={{ border: 'solid 2px #67788a', padding: '20px' }}>
+  <UseAuthorizeExample />
+</div>
+
+```jsx
+import * as React from 'react';
+import { useAnalyticsApi, useAuthorize, useSignOut } from '@devboldly/react-use-analytics-api';
+
+export function UseSignOutExample(props) {
+  const { ready, gapi, authorized, error } = useAnalyticsApi();
+  const authorize = useAuthorize(gapi, {
+    clientId,
+    container: 'authorize-container-id',
+  });
+  const signOut = useSignOut(gapi);
+
+  // Workaround for API limitation
+  const [authorizeCalled, setAuthorizeCalled] = React.useState(false);
+  const authDiv = React.useRef(null);
+  const hasAuthElements = authDiv.current && authDiv?.current?.children?.length > 0;
+
+  React.useEffect(() => {
+    if (ready && !error && !authorizeCalled) {
+      authorize();
+      setAuthorizeCalled(true);
+    }
+  }, [authorize, authorizeCalled, error, ready]);
+
+  return (
+    <div>
+      {!error &&
+        (ready && !!gapi ? (
+          <div>
+            {authorized && (
+              <div>
+                ☀️ Logged into Google Analytics! <button onClick={() => signOut()}>Sign Out</button>
+              </div>
+            )}
+            {!authorized && <div>🔐 Not logged into Google Analytics</div>}
+            <div id="authorize-container-id" ref={authDiv} />
+            {!authorized && authorizeCalled && !hasAuthElements && <div>🔄 Refresh the page to access analytics.</div>}
+          </div>
+        ) : (
+          <div>⌛ Loading...</div>
+        ))}
+      {error && <div>{error.toString()}</div>}
+    </div>
+  );
+}
+```

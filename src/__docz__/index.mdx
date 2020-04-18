@@ -8,61 +8,85 @@ route: /
 
 import { Playground } from 'docz';
 
-import GoogleAnalytics from '../__docz__/components/GoogleAnalytics';
-import { TRACKING_ID } from '../__docz__/analytics-config';
-import CreatedBy from '../__docz__/components/CreatedBy';
+import SvgIcon from '../__docz__/components/SvgIcon';
 import githubSvg from '../__docz__/images/github.svg';
-
-<GoogleAnalytics trackingId={TRACKING_ID} />
 
 <div style={{
 	display: 'flex',
-	alignItems: 'center',
+	alignItems: 'baseline',
 }}>
   <div>
-    <h1>React Library Starter</h1>
+    <h1>React Use Analytics API</h1>
   </div>
   <div>
-    <a href="https://github.com/devboldly/react-library-starter/" target="_blank" rel="noopener noreferrer">
-      <img src={githubSvg} width="28" style={{ margin: '0 0 0 20px' }}/>
+    <a href="https://github.com/devboldly/react-use-analytics-api" target="_blank" rel="noopener noreferrer">
+      <SvgIcon src={githubSvg} size={28} style={{ margin: '0 0 0 20px' }} />
     </a>
   </div>
 </div>
 
-<strong>
-  This header will contain a brief description of the project.
-</strong>
+**React hook for loading the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/).**
+
+#### [👁️ Live Demo](/useDataChart#example)
 
 ## Overview
 
-This section will contain an overview so people can have a high-level understanding of the project.
+The [`useAnalyticsApi`](/useAnalyticsApi) hook can be used to load and ready the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) in React.
+
+> **What is the Google Analytics Embed API?** It is a JavaScript library that allows you to easily create and embed Google Analytics charts on a third-party website in a matter of minutes.
+
+This library also provides a few helper hooks for common operations via the API:
+
+- [useAuthorize](/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
+- [useViewSelector](/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
+- [useDataChart](/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
+- [useSignOut](/useSignOut) - Sign the user out
+
+> **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://react-analytics-charts.netlify.com/).
 
 ### Features include:
 
-- **🚀 List your features, use fun [emojis](https://emojipedia.org/search/?q=rocket)**
-  - Give a little more info on each feature or mention benefits.
+- **🚀 Easily load the Google Analytics Embed API**
+  - Loading and readying the API is handled for you so you can just focus on the good stuff, like embedding charts.
+- **📈 Drop in charts quickly and easily**
+  - Embed Google Analytics charts on your site in minutes.
+- **💁 From auth to charts, it's handled for you**
+  - Side-effects are handled for common API operations. Need to handle the auth flow, render a view selector, or render charts? Got ya covered!
+- **🧼 Minimized `window` dependence**
+  - Google loads the API to `window`, but this hook pulls the API into a singleton to limit `window` dependence.
+- **🤝 Hooks stay synchronized**
+  - When calling the API hook in multiple places, changes to readiness and auth will propate to all hooks, keeping them in sync.
+- **✨ Live examples and rich documentation**
+  - Develop easier with plenty of live examples, starting points, and rich docs.
+- **And more!**
 
-## Installation
+### Installation
 
 ```
-npm i @devboldly/react-library-starter
+npm i @devboldly/react-use-analytics-api
 ```
 
 ## Quick Start
 
-This section will contain a copy/paste example so people can get started quickly.
-
-### ExampleComponent
+To load the Google Analytics Embed API, use the [`useAnalyticsApi`](/useAnalyticsApi) hook:
 
 ```jsx
-  <ExampleComponent text="Example Component"/>
+import { useAnalyticsApi } from '@devboldly/react-use-analytics-api';
 ```
 
-### useExample Hook
+Then in your function component: 
 
 ```jsx
-const [value, setValue] = useExample("Example value");
+const { ready, gapi, authorized, error } = useAnalyticsApi();
 ```
+
+When `ready` is `true`, the `gapi` object will be set to the loaded and ready-to-use [Google Analytics Embed API](/useAnalyticsApi). The `gapi` object will be `undefined` until it is ready to use.
+
+The `authorized` property will be `true` when the user is authorized, `false` otherwise. 
+
+From here, you can [authorize the user](/useAuthorize), [render a view selector](/useViewSelector), and [render charts](/useDataChart)... or do [anything else you want](/useAnalyticsApi#using-the-api-itself) with the API!
+
+> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](/useDataChart#example). This is a great starting point for building your own charts dashboard.
 
 ## TypeScript
 
@@ -76,8 +100,6 @@ Feel free to submit a pull request for bugs or additions, and make sure to updat
 
 For major changes, open an issue first to discuss what you'd like to change.
 
-## ⭐ Found It Helpful? Star It!
+## ⭐ Found It Helpful? [Star It!](https://github.com/devboldly/react-use-analytics-api/stargazers)
 
-More stars means more development love. So if you found this project helpful, [star it](https://github.com/devboldly/react-library-starter)! [👉⭐](https://github.com/devboldly/react-library-starter)
-
-<CreatedBy author="DevBoldly" url="https://devboldly.com/" emoji="🍺" emojiLabel="Beer"/>
+More stars means more development love. So if you found this project helpful, [star it](https://github.com/devboldly/react-use-analytics-api/stargazers)! [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
