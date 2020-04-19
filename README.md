@@ -1,5 +1,5 @@
 <h2 align="center">
-  React Analytics API
+  React Use Analytics API
   <br/>
   <small><a href="https://github.com/devboldly/react-use-analytics-api">
     react-use-analytics-api
