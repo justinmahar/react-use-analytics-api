@@ -12,7 +12,7 @@ import { useAuthorize } from './useAuthorize';
 ## Description
 
 The `useAuthorize` hook can be used to authorize the user via the [Google Analytics Embed API](/useAnalyticsApi) in several ways:
-- Render an authorize button using a [Client ID](https://react-analytics-charts.netlify.app/google-oauth-client-id)
+- Render an authorize button using a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id)
 - Authorize with an [access token](https://ga-dev-tools.appspot.com/embed-api/server-side-authorization/)
 
 The user must be authorized before the API can query for things like chart data.
@@ -25,7 +25,7 @@ import { useAuthorize } from '@devboldly/react-use-analytics-api';
 
 The `useAuthorize` hook returns an `authorize` function that calls [`gapi.auth.authorize`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) using the provided [auth options](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options).
 
-### Using A [Client ID](https://react-analytics-charts.netlify.app/google-oauth-client-id)
+### Using A [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id)
 
 ```jsx
 const authorize = useAuthorize(gapi, {
@@ -82,7 +82,7 @@ When `gapi` is not `undefined`, this function calls [`gapi.auth.authorize`](http
 
 ## Example
 
-The following example demonstrates use of the `useAuthorize` hook with a [Client ID](https://react-analytics-charts.netlify.app/google-oauth-client-id) to sign a user into Google Analytics.
+The following example demonstrates use of the `useAuthorize` hook with a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id) to sign a user into Google Analytics.
 
 Due to an [API limitation](#limitations), the authorize button can only be rendered to the page once per page load. This means once the container `div` is destroyed and re-rendered by React, the authorize button will no longer appear. 
 

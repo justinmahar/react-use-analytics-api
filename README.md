@@ -22,24 +22,24 @@
 
 ## Documentation
 
-Read the **[official documentation](https://react-use-analytics-api.netlify.app/)**.
+Read the **[official documentation](https://devboldly.github.io/react-use-analytics-api/)**.
 
-#### [👁️ Live Demo](https://react-use-analytics-api.netlify.app/useDataChart#example)
+#### [👁️ Live Demo](https://devboldly.github.io/react-use-analytics-api/useDataChart#example)
 
 ## Overview
 
-The [`useAnalyticsApi`](https://react-use-analytics-api.netlify.app/useAnalyticsApi) hook can be used to load and ready the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) in React.
+The [`useAnalyticsApi`](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) hook can be used to load and ready the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) in React.
 
 > **What is the Google Analytics Embed API?** It is a JavaScript library that allows you to easily create and embed Google Analytics charts on a third-party website in a matter of minutes.
 
 This library also provides a few helper hooks for common operations via the API:
 
-- [useAuthorize](https://react-use-analytics-api.netlify.app/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
-- [useViewSelector](https://react-use-analytics-api.netlify.app/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
-- [useDataChart](https://react-use-analytics-api.netlify.app/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
-- [useSignOut](https://react-use-analytics-api.netlify.app/useSignOut) - Sign the user out
+- [useAuthorize](https://devboldly.github.io/react-use-analytics-api/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
+- [useViewSelector](https://devboldly.github.io/react-use-analytics-api/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
+- [useDataChart](https://devboldly.github.io/react-use-analytics-api/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
+- [useSignOut](https://devboldly.github.io/react-use-analytics-api/useSignOut) - Sign the user out
 
-> **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://react-analytics-charts.netlify.com/).
+> **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/).
 
 ### Features include:
 
@@ -65,7 +65,7 @@ npm i @devboldly/react-use-analytics-api
 
 ## Quick Start
 
-To load the Google Analytics Embed API, use the [`useAnalyticsApi`](https://react-use-analytics-api.netlify.app/useAnalyticsApi) hook:
+To load the Google Analytics Embed API, use the [`useAnalyticsApi`](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) hook:
 
 ```jsx
 import { useAnalyticsApi } from '@devboldly/react-use-analytics-api';
@@ -77,13 +77,13 @@ Then in your function component:
 const { ready, gapi, authorized, error } = useAnalyticsApi();
 ```
 
-When `ready` is `true`, the `gapi` object will be set to the loaded and ready-to-use [Google Analytics Embed API](https://react-use-analytics-api.netlify.app/useAnalyticsApi). The `gapi` object will be `undefined` until it is ready to use.
+When `ready` is `true`, the `gapi` object will be set to the loaded and ready-to-use [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi). The `gapi` object will be `undefined` until it is ready to use.
 
 The `authorized` property will be `true` when the user is authorized, `false` otherwise. 
 
-From here, you can [authorize the user](https://react-use-analytics-api.netlify.app/useAuthorize), [render a view selector](https://react-use-analytics-api.netlify.app/useViewSelector), and [render charts](https://react-use-analytics-api.netlify.app/useDataChart)... or do [anything else you want](https://react-use-analytics-api.netlify.app/useAnalyticsApi#using-the-api-itself) with the API!
+From here, you can [authorize the user](https://devboldly.github.io/react-use-analytics-api/useAuthorize), [render a view selector](https://devboldly.github.io/react-use-analytics-api/useViewSelector), and [render charts](https://devboldly.github.io/react-use-analytics-api/useDataChart)... or do [anything else you want](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi#using-the-api-itself) with the API!
 
-> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://react-use-analytics-api.netlify.app/useDataChart#example). This is a great starting point for building your own charts dashboard.
+> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://devboldly.github.io/react-use-analytics-api/useDataChart#example). This is a great starting point for building your own charts dashboard.
 
 ## TypeScript
 
