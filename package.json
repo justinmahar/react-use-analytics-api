@@ -69,6 +69,7 @@
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
     "react-ga": "^2.7.0",
+    "react-helmet": "^6.0.0",
     "react-test-renderer": "^16.13.0",
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.1",

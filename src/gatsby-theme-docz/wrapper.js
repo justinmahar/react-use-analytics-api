@@ -1,5 +1,7 @@
-import { gaTrackingId } from './analytics-config';
+import React from 'react';
+import { themeConfig } from './theme-config';
 import ReactGA from 'react-ga';
+import { Helmet } from 'react-helmet';
 
 // See: https://github.com/doczjs/docz/tree/master/core/gatsby-theme-docz#wrapping-the-entire-app
 
@@ -9,7 +11,7 @@ let lastPageview = undefined;
 export default ({ children, doc }) => {
   if (typeof window !== 'undefined') {
     if (!gaInitialized) {
-      ReactGA.initialize(gaTrackingId);
+      ReactGA.initialize(themeConfig.gaTrackingId);
       gaInitialized = true;
     }
     // Track page view
@@ -19,5 +21,12 @@ export default ({ children, doc }) => {
       lastPageview = newPageview;
     }
   }
-  return children;
+  return (
+    <>
+      <Helmet>
+        <link rel="icon" type="image/x-icon" href={themeConfig.faviconUrl} />
+      </Helmet>
+      {children}
+    </>
+  );
 };
