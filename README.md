@@ -1,9 +1,5 @@
 <h2 align="center">
-  React Use Analytics API
-  <br/>
-  <small><a href="https://github.com/devboldly/react-use-analytics-api">
-    react-use-analytics-api
-  </a></small>
+  <a href="https://github.com/devboldly/react-use-analytics-api">React Use Analytics API</a>
 </h2>
 <h3 align="center">
   React hook for loading the <a href="https://ga-dev-tools.appspot.com/embed-api/">Google Analytics Embed API</a>.
