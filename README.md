@@ -2,15 +2,15 @@
   React Analytics API
   <br/>
   <small><a href="https://github.com/devboldly/react-use-analytics-api">
-    @devboldly/react-use-analytics-api
+    react-use-analytics-api
   </a></small>
 </h2>
 <h3 align="center">
   React hook for loading the <a href="https://ga-dev-tools.appspot.com/embed-api/">Google Analytics Embed API</a>.
 </h3>
 <p align="center">
-  <a href="https://badge.fury.io/js/%40devboldly%2Freact-use-analytics-api">
-    <img src="https://badge.fury.io/js/%40devboldly%2Freact-use-analytics-api.svg" alt="npm Version"/>
+  <a href="https://badge.fury.io/js/react-use-analytics-api">
+    <img src="https://badge.fury.io/js/react-use-analytics-api.svg" alt="npm Version"/>
   </a>
   <a href="https://github.com/devboldly/react-use-analytics-api/actions">
     <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Tests/badge.svg" alt="Tests Status"/>
@@ -60,7 +60,7 @@ This library also provides a few helper hooks for common operations via the API:
 ### Installation
 
 ```
-npm i @devboldly/react-use-analytics-api
+npm i react-use-analytics-api
 ```
 
 ## Quick Start
@@ -68,7 +68,7 @@ npm i @devboldly/react-use-analytics-api
 To load the Google Analytics Embed API, use the [`useAnalyticsApi`](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) hook:
 
 ```jsx
-import { useAnalyticsApi } from '@devboldly/react-use-analytics-api';
+import { useAnalyticsApi } from 'react-use-analytics-api';
 ```
 
 Then in your function component: 

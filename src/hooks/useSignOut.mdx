@@ -16,7 +16,7 @@ This hook returns a `signOut` function that can be used to sign the user out of 
 ## Usage
 
 ```jsx
-import { signOut } from '@devboldly/react-use-analytics-api';
+import { signOut } from 'react-use-analytics-api';
 ```
 
 In your function component:
@@ -55,7 +55,7 @@ When `gapi` is not `undefined`, this function calls [`gapi.auth.signOut`](https:
 
 ```jsx
 import * as React from 'react';
-import { useAnalyticsApi, useAuthorize, useSignOut } from '@devboldly/react-use-analytics-api';
+import { useAnalyticsApi, useAuthorize, useSignOut } from 'react-use-analytics-api';
 
 export function UseSignOutExample(props) {
   const { ready, gapi, authorized, error } = useAnalyticsApi();

@@ -20,7 +20,7 @@ The user must be authorized before the API can query for things like chart data.
 ## Usage
 
 ```jsx
-import { useAuthorize } from '@devboldly/react-use-analytics-api';
+import { useAuthorize } from 'react-use-analytics-api';
 ```
 
 The `useAuthorize` hook returns an `authorize` function that calls [`gapi.auth.authorize`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) using the provided [auth options](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options).
@@ -96,7 +96,7 @@ To take this into consideration, we use a `ref` to check if the authorize contai
 
 ```jsx
 import * as React from 'react';
-import { useAnalyticsApi, useAuthorize, useSignOut } from '@devboldly/react-use-analytics-api';
+import { useAnalyticsApi, useAuthorize, useSignOut } from 'react-use-analytics-api';
 
 export function UseAuthorizeExample(props) {
   const { ready, gapi, authorized, error } = useAnalyticsApi();
@@ -148,7 +148,7 @@ If you authorize or sign out manually outside of this library (and React), you w
 To do this, you can access the emitter and singleton used by the hooks in this library:
 
 ```jsx
-import { apiStateEmitter, apiSingleton } from '@devboldly/react-use-analytics-api';
+import { apiStateEmitter, apiSingleton } from 'react-use-analytics-api';
 ```
 
 Then, when your auth state changes, you can manually update the hooks via the `authorized` event:
