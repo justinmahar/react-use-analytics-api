@@ -1,5 +1,5 @@
 import React from 'react';
-import { themeConfig } from './theme-config';
+import { customThemeConfig } from './custom-theme-config';
 import ReactGA from 'react-ga';
 import { Helmet } from 'react-helmet';
 
@@ -8,10 +8,10 @@ import { Helmet } from 'react-helmet';
 let gaInitialized = false;
 let lastPageview = undefined;
 
-export default ({ children, doc }) => {
-  if (typeof window !== 'undefined') {
+export default ({ children }) => {
+  if (typeof window !== 'undefined' && customThemeConfig.gaTrackingId) {
     if (!gaInitialized) {
-      ReactGA.initialize(themeConfig.gaTrackingId);
+      ReactGA.initialize(customThemeConfig.gaTrackingId);
       gaInitialized = true;
     }
     // Track page view
@@ -24,7 +24,7 @@ export default ({ children, doc }) => {
   return (
     <>
       <Helmet>
-        <link rel="icon" type="image/x-icon" href={themeConfig.faviconUrl} />
+        <link rel="icon" type="image/x-icon" href={customThemeConfig.faviconUrl} />
       </Helmet>
       {children}
     </>
