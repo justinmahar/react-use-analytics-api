@@ -6,17 +6,17 @@
   </a></small>
 </h2>
 <h3 align="center">
-  React hook for loading the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/).
+  React hook for loading the <a href="https://ga-dev-tools.appspot.com/embed-api/">Google Analytics Embed API</a>.
 </h3>
 <p align="center">
   <a href="https://badge.fury.io/js/%40devboldly%2Freact-use-analytics-api">
     <img src="https://badge.fury.io/js/%40devboldly%2Freact-use-analytics-api.svg" alt="npm Version"/>
   </a>
   <a href="https://github.com/devboldly/react-use-analytics-api/actions">
-    <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Node.js%20CI/badge.svg" alt="Build Status"/>
+    <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Tests/badge.svg" alt="Tests Status"/>
   </a>
-  <a href="https://app.netlify.com/sites/react-use-analytics-api/deploys">
-    <img src="https://api.netlify.com/api/v1/badges/94e467a6-9cac-4ff6-9ed3-734974c3603d/deploy-status" alt="Netlify Status"/>
+  <a href="https://github.com/devboldly/react-use-analytics-api/actions">
+    <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Deploy/badge.svg" alt="Deploy Status"/>
   </a>
 </p>
 
