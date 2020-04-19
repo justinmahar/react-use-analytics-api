@@ -87,15 +87,13 @@ Type definitions have been included for [TypeScript](https://www.typescriptlang.
 
 ## Contributing
 
-Open source software is awesome and so are you. 😎
-
 Feel free to submit a pull request for bugs or additions, and make sure to update tests as appropriate. Even the smallest changes help.
 
 For major changes, open an issue first to discuss what you'd like to change.
 
 ## ⭐ Found It Helpful? [Star It](https://github.com/devboldly/react-use-analytics-api/stargazers)
 
-If you found this project helpful, let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
+If you found this project helpful, be awesome and let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
 
 ## MIT License
 
