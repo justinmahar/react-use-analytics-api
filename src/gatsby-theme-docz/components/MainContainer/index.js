@@ -14,7 +14,6 @@ export const MainContainer = ({ children, ...rest }) => {
       lastPageview = newPageview;
     }
   }
-  console.log('children', children);
   return (
     <OriginalMainContainer {...rest}>
       {children}
