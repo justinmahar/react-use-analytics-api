@@ -11,8 +11,4 @@ import { GoogleAnalyticsEmbedAPI } from './GoogleAnalyticsEmbedAPI';
  * @param viewSelectorId The ID of the DOM element to render the view selector to.
  * @param onChange Called with the selected `viewId` whenever the view selection changes. Will be called immediately.
  */
-export declare const useViewSelector: (
-  gapi: GoogleAnalyticsEmbedAPI | undefined,
-  viewSelectorId: string,
-  onChange: (viewId: string) => void
-) => void;
+export declare const useViewSelector: (gapi: GoogleAnalyticsEmbedAPI | undefined, viewSelectorId: string, onChange: (viewId: string) => void) => void;

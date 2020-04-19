@@ -5,14 +5,14 @@ import { GoogleAnalyticsEmbedAPI } from './GoogleAnalyticsEmbedAPI';
  * See documentation: https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi#return
  */
 export interface GoogleAnalyticsEmbedAPIHook {
-  /** `true` when the Google Analytics Embed API is ready to use, `false` otherwise. */
-  ready: boolean;
-  /** The [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/). This will be `undefined` until the analytics API is fully loaded and ready. */
-  gapi?: GoogleAnalyticsEmbedAPI;
-  /** `true` if the user is authorized, `false` otherwise. If you authorize via the [`useAuthorize`](https://devboldly.github.io/react-use-analytics-api/useAuthorize) hook, this property will be updated for all `useAnalyticsApi` hooks. Otherwise, it will be set to the last known value when the hook was instantiated. */
-  authorized: boolean;
-  /** When not `undefined`, this indicates an error loading the API. */
-  error?: Error;
+    /** `true` when the Google Analytics Embed API is ready to use, `false` otherwise. */
+    ready: boolean;
+    /** The [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/). This will be `undefined` until the analytics API is fully loaded and ready. */
+    gapi?: GoogleAnalyticsEmbedAPI;
+    /** `true` if the user is authorized, `false` otherwise. If you authorize via the [`useAuthorize`](https://devboldly.github.io/react-use-analytics-api/useAuthorize) hook, this property will be updated for all `useAnalyticsApi` hooks. Otherwise, it will be set to the last known value when the hook was instantiated. */
+    authorized: boolean;
+    /** When not `undefined`, this indicates an error loading the API. */
+    error?: Error;
 }
 /**
  * Contains `gapi` and tracks whether the script was requested and if we're authorized.
@@ -22,9 +22,9 @@ export interface GoogleAnalyticsEmbedAPIHook {
  * - `gapi` - Type: [GoogleAnalyticsEmbedAPI](https://developers.google.com/analytics/devguides/reporting/embed/v1) &#124; undefined - The API, or undefined if it's not loaded and ready.
  */
 export declare const apiSingleton: {
-  scriptRequested: boolean;
-  authorized: boolean;
-  gapi?: GoogleAnalyticsEmbedAPI;
+    scriptRequested: boolean;
+    authorized: boolean;
+    gapi?: GoogleAnalyticsEmbedAPI;
 };
 /**
  * Used to keep hooks synchronized.
