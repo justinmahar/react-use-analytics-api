@@ -79,7 +79,7 @@ The `authorized` property will be `true` when the user is authorized, `false` ot
 
 From here, you can [authorize the user](https://devboldly.github.io/react-use-analytics-api/useAuthorize), [render a view selector](https://devboldly.github.io/react-use-analytics-api/useViewSelector), and [render charts](https://devboldly.github.io/react-use-analytics-api/useDataChart)... or do [anything else you want](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi#using-the-api-itself) with the API!
 
-> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://devboldly.github.io/react-use-analytics-api/useDataChart#example). This is a great starting point for building your own charts dashboard.
+> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://devboldly.github.io/react-use-analytics-api/useDataChart#example). This is a great starting point for building your own charts dashboard. You can also check out [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/) which is built on this hooks library.
 
 ## TypeScript
 
@@ -93,6 +93,30 @@ Feel free to submit a pull request for bugs or additions, and make sure to updat
 
 For major changes, open an issue first to discuss what you'd like to change.
 
-## ⭐ Found It Helpful? [Star It!](https://github.com/devboldly/react-use-analytics-api/stargazers)
+## ⭐ Found It Helpful? [Star It](https://github.com/devboldly/react-use-analytics-api/stargazers)
 
-More stars means more development love. So if you found this project helpful, [star it](https://github.com/devboldly/react-use-analytics-api/stargazers)! [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
+If you found this project helpful, let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
+
+## MIT License
+
+```
+Copyright © 2020 DevBoldly https://devboldly.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
