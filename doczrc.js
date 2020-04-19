@@ -15,7 +15,7 @@ const docsConfig = {
   /** Specify the output directory for `docz build` */
   // dest: '.docz/dist',
   /** The title for your site. This will be the prefix for all page titles and displayed in the sidebar in the default theme. */
-  // title: 'Project Name',
+  title: 'React Use Analytics API',
   /** The description for the site. It will be rendered as a <meta> tag in the page HTML. */
   // description: 'Project description.',
   /** This option is used if you need to import Typescript components inside your .mdx files. */
