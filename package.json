@@ -32,8 +32,7 @@
     "url": "https://github.com/devboldly/react-use-analytics-api/issues"
   },
   "keywords": [],
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
@@ -55,15 +54,17 @@
     "@types/node": "^13.9.0",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
+    "@types/webpack": "^4.41.12",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "babel-loader": "^8.0.6",
     "docz": "^2.3.1",
     "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.4",
     "eslint-plugin-json": "^2.1.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-app": "^6.2.1",
-    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "gh-pages": "^2.2.0",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
