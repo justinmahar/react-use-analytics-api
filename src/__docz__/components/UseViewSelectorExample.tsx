@@ -3,7 +3,7 @@ import { useAnalyticsApi } from '../../hooks/useAnalyticsApi';
 import { useAuthorize } from '../../hooks/useAuthorize';
 import { useSignOut } from '../../hooks/useSignOut';
 import { useViewSelector } from '../../hooks/useViewSelector';
-import clientId from '../client-id-config';
+import { customConfig } from '../custom-config';
 
 export function UseViewSelectorExample(): JSX.Element {
   const { ready, gapi, authorized, error } = useAnalyticsApi();
@@ -17,7 +17,7 @@ export function UseViewSelectorExample(): JSX.Element {
   const hasAuthElements = authDiv.current && authDiv?.current?.children?.length > 0;
 
   const authorize = useAuthorize(gapi, {
-    clientId,
+    clientId: customConfig.clientId,
     container: 'authorize-container-id',
   });
   const signOut = useSignOut(gapi);

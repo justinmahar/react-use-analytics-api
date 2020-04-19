@@ -2,12 +2,12 @@ import * as React from 'react';
 import { useAnalyticsApi } from '../../hooks/useAnalyticsApi';
 import { useAuthorize } from '../../hooks/useAuthorize';
 import { useSignOut } from '../../hooks/useSignOut';
-import clientId from '../client-id-config';
+import { customConfig } from '../custom-config';
 
 export function UseAuthorizeExample(): JSX.Element {
   const { ready, gapi, authorized, error } = useAnalyticsApi();
   const authorize = useAuthorize(gapi, {
-    clientId,
+    clientId: customConfig.clientId,
     container: 'authorize-container-id',
   });
   const signOut = useSignOut(gapi);
