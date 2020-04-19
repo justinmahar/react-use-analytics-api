@@ -8,10 +8,10 @@
   <a href="https://badge.fury.io/js/react-use-analytics-api">
     <img src="https://badge.fury.io/js/react-use-analytics-api.svg" alt="npm Version"/>
   </a>
-  <a href="https://github.com/devboldly/react-use-analytics-api/actions">
+  <a href="https://github.com/devboldly/react-use-analytics-api/actions?query=workflow%3ATests">
     <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Tests/badge.svg" alt="Tests Status"/>
   </a>
-  <a href="https://github.com/devboldly/react-use-analytics-api/actions">
+  <a href="https://github.com/devboldly/react-use-analytics-api/actions?query=workflow%3ADeploy">
     <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Deploy/badge.svg" alt="Deploy Status"/>
   </a>
 </p>
