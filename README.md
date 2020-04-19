@@ -24,7 +24,7 @@
 
 Read the **[official documentation](https://devboldly.github.io/react-use-analytics-api/)**.
 
-#### [👁️ Live Demo](https://devboldly.github.io/react-use-analytics-api/useDataChart#example)
+**[👁️ Live Demo](https://devboldly.github.io/react-use-analytics-api/useDataChart#example)**
 
 ## Overview
 
