@@ -24,6 +24,7 @@ export default ({ children }) => {
   return (
     <>
       <Helmet>
+        {/* Note: If using gh-pages, favicon only shows up when deployed */}
         <link rel="icon" type="image/x-icon" href={themeAdditionsConfig.faviconUrl} />
       </Helmet>
       {children}

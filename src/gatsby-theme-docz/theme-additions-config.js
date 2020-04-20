@@ -9,6 +9,7 @@ export const themeAdditionsConfig = {
     authorName: 'DevBoldly',
     authorUrl: 'https://devboldly.com/',
     hideEmoji: false,
+    /** Holidays like new year's day are announced, for fun. */
     hideHolidays: false,
     hostName: 'GitHub Pages',
     hostUrl: 'https://pages.github.com/',
@@ -22,7 +23,9 @@ export const themeAdditionsConfig = {
     feedbackFieldName: 'entry.593370879',
     siteFieldName: 'entry.1824430892',
     pageUrlFieldName: 'entry.2081371977',
-    /** Paths to exclude for gathering feedback. */
-    excludedPaths: ['/', '/mit-license', '/code-of-conduct', '/ssss'],
+    /**
+     * Page paths to exclude the feedback form from.
+     */
+    excludedPaths: ['/', '/mit-license', '/code-of-conduct'],
   },
 };
