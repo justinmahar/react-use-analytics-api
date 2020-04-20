@@ -7,9 +7,10 @@ export const MainContainer = ({ children, ...rest }) => {
   let showFeedbackForm = typeof window !== 'undefined' && themeAdditionsConfig.feedbackForm.enabled;
   if (showFeedbackForm) {
     for (let i = 0; i < themeAdditionsConfig.feedbackForm.excludedPaths.length; i++) {
-      const excludedPath = themeAdditionsConfig.feedbackForm.excludedPaths[i].replace(/^\/|\/$/g, ''); // Remove leading and trailing slashes;
-      const currentPath = window.location.pathname.replace(/^\/|\/$/g, '');
-      // Account for running from domain root, or out of the project folder (gh-pages)
+      const trimSlashesRegex = /^\/|\/$/g; // Use to remove leading and trailing slashes
+      const excludedPath = themeAdditionsConfig.feedbackForm.excludedPaths[i].replace(trimSlashesRegex, '');
+      const currentPath = window.location.pathname.replace(trimSlashesRegex, '');
+      // Exclude in domain root and of the repo folder (for gh-pages)
       if (
         currentPath === excludedPath ||
         currentPath === themeAdditionsConfig.projectName ||
