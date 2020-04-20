@@ -9,8 +9,12 @@ export const MainContainer = ({ children, ...rest }) => {
     for (let i = 0; i < themeAdditionsConfig.feedbackForm.excludedPaths.length; i++) {
       const excludedPath = themeAdditionsConfig.feedbackForm.excludedPaths[i].replace(/^\/|\/$/g, ''); // Remove leading and trailing slashes;
       const currentPath = window.location.pathname.replace(/^\/|\/$/g, '');
-      // Account for running normally, or on gh-pages
-      if (currentPath === excludedPath || currentPath === `${themeAdditionsConfig.projectName}/${excludedPath}`) {
+      // Account for running from domain root, or out of the project folder (gh-pages)
+      if (
+        currentPath === excludedPath ||
+        currentPath === themeAdditionsConfig.projectName ||
+        currentPath === `${themeAdditionsConfig.projectName}/${excludedPath}`
+      ) {
         showFeedbackForm = false;
         break;
       }

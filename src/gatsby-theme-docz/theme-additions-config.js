@@ -9,7 +9,7 @@ export const themeAdditionsConfig = {
     authorName: 'DevBoldly',
     authorUrl: 'https://devboldly.com/',
     hideEmoji: false,
-    /** Holidays like new year's day are announced, for fun. */
+    /** Holidays like New Year's Day are announced for fun. */
     hideHolidays: false,
     hostName: 'GitHub Pages',
     hostUrl: 'https://pages.github.com/',
