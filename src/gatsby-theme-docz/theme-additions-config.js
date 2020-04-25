@@ -22,8 +22,7 @@ export const themeAdditionsConfig = {
   logoImageUrl: `${publicUrl}/favicon-32x32.png`,
   /** Alt text for header logo image (when provided). */
   logoImageAlt: 'Site logo',
-  /** Add text before the header logo, such as an emoji, to act as a logo image placeholder. */
-  logoPrefix: undefined, //'🚀',
+  /** Footer settings */
   footer: {
     /** Set to false to disable the author/"powered by" footer. */
     enabled: true,
