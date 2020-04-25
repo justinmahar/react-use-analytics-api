@@ -16,7 +16,7 @@ import { GoogleAnalyticsEmbedAPI, ViewSelector } from './GoogleAnalyticsEmbedAPI
 export const useViewSelector = (
   gapi: GoogleAnalyticsEmbedAPI | undefined,
   viewSelectorId: string,
-  onChange: (viewId: string) => void
+  onChange?: (viewId: string) => void
 ): void => {
   const [viewSelector, setViewSelector] = React.useState<ViewSelector>();
   React.useEffect(() => {
@@ -37,7 +37,9 @@ export const useViewSelector = (
          * Render the dataChart on the page whenever a new view is selected.
          */
         newViewSelector.on('change', function(viewId: string) {
-          onChange(viewId);
+          if (onChange) {
+            onChange(viewId);
+          }
         });
 
         setViewSelector(newViewSelector);

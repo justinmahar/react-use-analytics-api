@@ -20,7 +20,9 @@
 
 Read the **[official documentation](https://devboldly.github.io/react-use-analytics-api/)**.
 
-**[👁️ Live Demo](https://devboldly.github.io/react-use-analytics-api/useDataChart#example)**
+👁️ **[Live Demo](https://devboldly.github.io/react-use-analytics-api/useDataChart#example)**
+
+*For components, check out: [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/)*
 
 ## Overview
 
@@ -28,12 +30,13 @@ The [`useAnalyticsApi`](https://devboldly.github.io/react-use-analytics-api/useA
 
 > **What is the Google Analytics Embed API?** It is a JavaScript library that allows you to easily create and embed Google Analytics charts on a third-party website in a matter of minutes.
 
-This library also provides a few helper hooks for common operations via the API:
+This library also provides helper hooks for the API's [built-in components](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference):
 
-- [useAuthorize](https://devboldly.github.io/react-use-analytics-api/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
-- [useViewSelector](https://devboldly.github.io/react-use-analytics-api/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
-- [useDataChart](https://devboldly.github.io/react-use-analytics-api/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
-- [useSignOut](https://devboldly.github.io/react-use-analytics-api/useSignOut) - Sign the user out
+- [useAuthorize](/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
+- [useViewSelector](/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
+- [useDataChart](/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
+- [useData](/useData) - Query [data](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data) from the Google Analytics Core Reporting API and get back the results
+- [useSignOut](/useSignOut) - [Sign the user out](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth)
 
 > **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/).
 
@@ -53,7 +56,7 @@ This library also provides a few helper hooks for common operations via the API:
   - Develop easier with plenty of live examples, starting points, and rich docs.
 - **And more!**
 
-### Installation
+## Installation
 
 ```
 npm i react-use-analytics-api
@@ -85,15 +88,21 @@ From here, you can [authorize the user](https://devboldly.github.io/react-use-an
 
 Type definitions have been included for [TypeScript](https://www.typescriptlang.org/) support.
 
+## Logo Attribution
+
+Logo graphics by [Twemoji](https://github.com/twitter/twemoji), licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Favicon by [favicon.io](https://favicon.io/emoji-favicons/).
+
 ## Contributing
 
-Feel free to submit a pull request for bugs or additions, and make sure to update tests as appropriate. Even the smallest changes help.
+Feel free to submit a pull request for bugs or additions, and make sure to update tests as appropriate. If you find a mistake in the docs, send a PR! Even the smallest changes help.
 
 For major changes, open an issue first to discuss what you'd like to change.
 
-## ⭐ Found It Helpful? [Star It](https://github.com/devboldly/react-use-analytics-api/stargazers)
+See the [library template](https://tinyurl.com/ya3k258d) for npm script documentation.
 
-If you found this project helpful, be awesome and let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
+## ⭐ Found It Helpful? [Star It!](https://github.com/devboldly/react-use-analytics-api/stargazers)
+
+If you found this project helpful, let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
 
 ## MIT License
 

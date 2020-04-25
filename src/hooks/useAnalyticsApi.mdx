@@ -42,11 +42,12 @@ For instance, when [rendering a chart](/useDataChart) via the API, content is in
 
 Therefore, any time you interact with `gapi`, it should be [treated as a side-effect](https://reactjs.org/docs/hooks-effect.html).
 
-For convenience, this library includes several helper hooks for common tasks that simplify safe API usage:
+This library also provides helper hooks for the API's [built-in components](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference):
 
 - [useAuthorize](/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
 - [useViewSelector](/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
 - [useDataChart](/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
+- [useData](/useData) - Query [data](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data) from the Google Analytics Core Reporting API and get back the results
 - [useSignOut](/useSignOut) - Sign the user out
 
 If you need to do anything with the API outside of these operations, be sure to [use an effect](https://reactjs.org/docs/hooks-effect.html) and do cleanup where appropriate.

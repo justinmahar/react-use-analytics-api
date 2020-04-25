@@ -4,6 +4,7 @@ import { useAuthorize } from '../hooks/useAuthorize';
 import { useDataChart } from '../hooks/useDataChart';
 import { useViewSelector } from '../hooks/useViewSelector';
 import { useSignOut } from '../hooks/useSignOut';
+import { useData } from '../hooks/useData';
 
 // Learn how to write stories:
 // https://storybook.js.org/docs/basics/writing-stories/
@@ -83,6 +84,24 @@ const HookComponent = props => {
       authorize();
     }
   }, [authorize, authorized]);
+
+  const query = {
+    metrics: 'ga:sessions',
+    dimensions: 'ga:date',
+    'start-date': '28daysAgo',
+    'end-date': 'today',
+    ids: viewId,
+  };
+  const execute = useData(
+    gapi,
+    query,
+    response => console.log('Data query response:', response),
+    response => console.error('Data query error:', response)
+  );
+
+  React.useEffect(() => {
+    execute();
+  }, [execute]);
 
   return (
     <>

@@ -57,6 +57,11 @@ if (typeof window !== 'undefined') {
  * - on `ready` - `() => void` - The API is loaded and ready.
  */
 export const apiStateEmitter = new EventEmitter();
+apiStateEmitter.setMaxListeners(100);
+/** The user is signed in or signed out. */
+export const authorizedEvent = 'authorized';
+/** The API is loaded and ready. */
+export const readyEvent = 'ready';
 
 /**
  * See documentation: https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi
@@ -81,18 +86,18 @@ export const useAnalyticsApi = (): GoogleAnalyticsEmbedAPIHook => {
         setAuthorized(isAuthorized);
       }
     };
-    apiStateEmitter.on('authorized', authorizedListener);
+    apiStateEmitter.on(authorizedEvent, authorizedListener);
     const readyListener = (): void => {
       if (!aborted) {
         setGapi(apiSingleton.gapi);
         setHookReady(true);
       }
     };
-    apiStateEmitter.on('ready', readyListener);
+    apiStateEmitter.on(readyEvent, readyListener);
     return () => {
       aborted = true;
-      apiStateEmitter.off('authorized', authorizedListener);
-      apiStateEmitter.off('ready', readyListener);
+      apiStateEmitter.off(authorizedEvent, authorizedListener);
+      apiStateEmitter.off(readyEvent, readyListener);
     };
   });
 
@@ -123,8 +128,8 @@ export const useAnalyticsApi = (): GoogleAnalyticsEmbedAPIHook => {
               setAuthorized(apiSingleton.authorized);
               // This hook is ready, but we need to update other hooks subscribed
               // to the singleton emitter
-              apiStateEmitter.emit('ready');
-              apiStateEmitter.emit('authorized', apiSingleton.authorized);
+              apiStateEmitter.emit(readyEvent);
+              apiStateEmitter.emit(authorizedEvent, apiSingleton.authorized);
             });
           } else {
             throw new Error("Couldn't add ready listener to gapi analytics.");

@@ -29,18 +29,21 @@ import githubSvg from '../__docz__/images/github.svg';
 
 👁️ **[Live Demo](/useDataChart#example)**
 
+*For components, check out: [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/)*
+
 ## Overview
 
 The [`useAnalyticsApi`](/useAnalyticsApi) hook can be used to load and ready the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) in React.
 
 > **What is the Google Analytics Embed API?** It is a JavaScript library that allows you to easily create and embed Google Analytics charts on a third-party website in a matter of minutes.
 
-This library also provides a few helper hooks for common operations via the API:
+This library also provides helper hooks for the API's [built-in components](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference):
 
 - [useAuthorize](/useAuthorize) - [Authorize](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) the user
 - [useViewSelector](/useViewSelector) - Render an Analytics [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
 - [useDataChart](/useDataChart) - Render a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart)
-- [useSignOut](/useSignOut) - Sign the user out
+- [useData](/useData) - Query [data](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data) from the Google Analytics Core Reporting API and get back the results
+- [useSignOut](/useSignOut) - [Sign the user out](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth)
 
 > **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/).
 
@@ -94,10 +97,12 @@ Type definitions have been included for [TypeScript](https://www.typescriptlang.
 
 ## Contributing
 
-Feel free to submit a pull request for bugs or additions, and make sure to update tests as appropriate. Even the smallest changes help.
+Feel free to submit a pull request for bugs or additions, and make sure to update tests as appropriate. If you find a mistake in the docs, send a PR! Even the smallest changes help.
 
 For major changes, open an issue first to discuss what you'd like to change.
 
-## ⭐ Found It Helpful? [Star It](https://github.com/devboldly/react-use-analytics-api/stargazers)
+See the [library template](https://tinyurl.com/ya3k258d) for npm script documentation.
+
+## ⭐ Found It Helpful? [Star It!](https://github.com/devboldly/react-use-analytics-api/stargazers)
 
 If you found this project helpful, let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)

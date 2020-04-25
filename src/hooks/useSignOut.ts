@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { GoogleAnalyticsEmbedAPI } from './GoogleAnalyticsEmbedAPI';
-import { apiSingleton, apiStateEmitter } from './useAnalyticsApi';
+import { apiSingleton, apiStateEmitter, authorizedEvent } from './useAnalyticsApi';
 
 /**
  * See documentation: https://devboldly.github.io/react-use-analytics-api/useSignOut
@@ -13,16 +13,16 @@ export const useSignOut = (gapi: GoogleAnalyticsEmbedAPI | undefined): (() => vo
   const [run, setRun] = React.useState(false);
 
   React.useEffect(() => {
-    if (run) {
+    if (typeof gapi !== 'undefined' && run) {
       setRun(false);
       gapi?.analytics?.auth?.signOut();
       apiSingleton.authorized = false;
-      apiStateEmitter.emit('authorized', false);
+      apiStateEmitter.emit(authorizedEvent, false);
     }
   }, [gapi, run]);
 
   const signOut = (): void => {
-    if (!run) {
+    if (typeof gapi !== 'undefined' && !run) {
       setRun(true);
     }
   };

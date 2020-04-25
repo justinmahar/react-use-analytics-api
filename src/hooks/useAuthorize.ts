@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { GoogleAnalyticsEmbedAPI } from './GoogleAnalyticsEmbedAPI';
-import { apiSingleton, apiStateEmitter } from './useAnalyticsApi';
+import { apiSingleton, apiStateEmitter, authorizedEvent } from './useAnalyticsApi';
 
 /**
  * See: https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options
@@ -55,10 +55,10 @@ export const useAuthorize = (
         setAuthorized(isAuthorized);
       }
     };
-    apiStateEmitter.on('authorized', authorizedListener);
+    apiStateEmitter.on(authorizedEvent, authorizedListener);
     return () => {
       aborted = true;
-      apiStateEmitter.off('authorized', authorizedListener);
+      apiStateEmitter.off(authorizedEvent, authorizedListener);
     };
   });
 
@@ -71,7 +71,7 @@ export const useAuthorize = (
             setAuthorized(true);
           }
           apiSingleton.authorized = true;
-          apiStateEmitter.emit('authorized', true);
+          apiStateEmitter.emit(authorizedEvent, true);
           if (typeof onSignIn !== 'undefined') {
             onSignIn();
           }

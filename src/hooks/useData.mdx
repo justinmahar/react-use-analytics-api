@@ -1,0 +1,69 @@
+---
+name: useData
+menu: Hooks
+route: /useData
+---
+
+<h1>useData</h1>
+
+## Description
+
+This hook returns an `execute` function that can be used to query the Google Analytics Core Reporting API for data and get back the results.
+
+You can use the raw data to build your own charts using a charting library of your choosing.
+
+## Usage
+
+```jsx
+import { useData } from 'react-use-analytics-api';
+```
+
+In your function component:
+
+```jsx
+const query = {
+  metrics: 'ga:sessions',
+  dimensions: 'ga:date',
+  'start-date': '28daysAgo',
+  'end-date': 'today',
+  ids: viewId,
+};
+const execute = useData(
+  gapi,
+  query,
+  response => console.log('Data query response:', response),
+  response => console.error('Data query error:', response)
+);
+React.useEffect(() => {
+  execute();
+}, [execute]);
+```
+
+Provide the hook with [`gapi`](/useAnalyticsApi), your `query`, and two callbacks: `onSuccess` and `onError`. 
+
+Call `execute` to run the query.
+
+## Signature
+
+`useData = (gapi?: GoogleAnalyticsEmbedAPI, query: Query, onSuccess?: (response: any) => void, onError?: (response: any) => void): (() => void)`
+
+### Arguments
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| gapi | `GoogleAnalyticsEmbedAPI` &#124; `undefined` | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, calling `useData` does nothing. |
+| query | [`Query`](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary) | The data [query](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary) for the Google Analytics Core Reporting API.  |
+| onSuccess | `(response) => void` | Fired when the query has successfully completed. The `response` argument will contain the query results. |
+| onError | `(response) => void` | Fired when an error occurs during the query process. If you want to get the error message from the response object it will be at `response.error.message`. |
+
+### Return
+
+The hook returns a function, `execute`.
+
+```jsx
+execute() => void
+```
+
+When `gapi` is not `undefined`, this function executes the [query](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary) to the Google Analytics Core Reporting API using [`gapi.analytics.report.Data`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data).
+
+After calling `execute`, either the `onSuccess` or `onError` callback will be called.
