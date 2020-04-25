@@ -8,6 +8,8 @@ const publicUrl = `/${repoName}/public`;
  * Includes Google Analytics, favicon, a footer, and feedback forms.
  */
 export const themeAdditionsConfig = {
+  /** Name of the project */
+  projectName: repoName,
   /** Google Analytics tracking ID */
   gaTrackingId: 'UA-148090679-5',
   /** Used to ensure site runs */
