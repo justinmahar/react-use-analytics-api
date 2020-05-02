@@ -2,9 +2,6 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useDataChart } from '../hooks/useDataChart';
 import { useAnalyticsApi } from '../hooks/useAnalyticsApi';
 
-// Learn how to test React hooks:
-// https://react-hooks-testing-library.com/
-
 describe('useDataChart Hook', () => {
   test('should run without crashing', () => {
     const { result: analyticsResult } = renderHook(() => useAnalyticsApi());
