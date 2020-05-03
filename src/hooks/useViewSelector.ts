@@ -2,7 +2,7 @@ import * as React from 'react';
 import { GoogleAnalyticsEmbedAPI, ViewSelector } from './GoogleAnalyticsEmbedAPI';
 
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useViewSelector
+ * See documentation: [useViewSelector](https://devboldly.github.io/react-use-analytics-api/useViewSelector)
  *
  * This hook renders a [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
  * into a container on the page using the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi).

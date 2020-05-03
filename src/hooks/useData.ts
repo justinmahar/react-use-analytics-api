@@ -3,7 +3,7 @@ import { GoogleAnalyticsEmbedAPI, Query } from './GoogleAnalyticsEmbedAPI';
 import { apiSingleton, apiStateEmitter, authorizedEvent } from './useAnalyticsApi';
 
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useData
+ * See documentation: [useData](https://devboldly.github.io/react-use-analytics-api/useData)
  *
  * This hook returns a `signOut` function that can be used to sign the user out of Google Analytics via the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi).
  *
