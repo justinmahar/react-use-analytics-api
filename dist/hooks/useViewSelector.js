@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useViewSelector
+ * See documentation: [useViewSelector](https://devboldly.github.io/react-use-analytics-api/useViewSelector)
  *
  * This hook renders a [ViewSelector](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#viewselector)
  * into a container on the page using the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi).
@@ -38,7 +38,9 @@ exports.useViewSelector = function (gapi, viewSelectorId, onChange) {
                  * Render the dataChart on the page whenever a new view is selected.
                  */
                 newViewSelector.on('change', function (viewId) {
-                    onChange(viewId);
+                    if (onChange) {
+                        onChange(viewId);
+                    }
                 });
                 setViewSelector(newViewSelector);
             }

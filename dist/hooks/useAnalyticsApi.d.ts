@@ -34,8 +34,12 @@ export declare const apiSingleton: {
  * - on `ready` - `() => void` - The API is loaded and ready.
  */
 export declare const apiStateEmitter: EventEmitter;
+/** The user is signed in or signed out. */
+export declare const authorizedEvent = "authorized";
+/** The API is loaded and ready. */
+export declare const readyEvent = "ready";
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi
+ * See documentation: [useAnalyticsApi](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi)
  *
  *  Use this hook to load and access the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) (`gapi`).
  *

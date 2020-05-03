@@ -27,7 +27,7 @@ export interface AuthorizeOptions {
     };
 }
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useAuthorize
+ * See documentation: [useAuthorize](https://devboldly.github.io/react-use-analytics-api/useAuthorize)
  *
  * The `useAuthorize` hook can be used to authorize the user via the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) in several ways:
  * - Render an authorize button using a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id)

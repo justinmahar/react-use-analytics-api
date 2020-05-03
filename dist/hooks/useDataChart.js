@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useDataChart
+ * See documentation: [useDataChart](https://devboldly.github.io/react-use-analytics-api/useDataChart)
  *
  * This hook renders a [DataChart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart) on the page using the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi).
  *

@@ -5,6 +5,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./hooks/useAnalyticsApi"));
 __export(require("./hooks/useAuthorize"));
+__export(require("./hooks/useData"));
 __export(require("./hooks/useDataChart"));
 __export(require("./hooks/useSignOut"));
 __export(require("./hooks/useViewSelector"));

@@ -45,8 +45,13 @@ if (typeof window !== 'undefined') {
  * - on `ready` - `() => void` - The API is loaded and ready.
  */
 exports.apiStateEmitter = new events_1.EventEmitter();
+exports.apiStateEmitter.setMaxListeners(100);
+/** The user is signed in or signed out. */
+exports.authorizedEvent = 'authorized';
+/** The API is loaded and ready. */
+exports.readyEvent = 'ready';
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi
+ * See documentation: [useAnalyticsApi](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi)
  *
  *  Use this hook to load and access the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) (`gapi`).
  *
@@ -67,18 +72,18 @@ exports.useAnalyticsApi = function () {
                 setAuthorized(isAuthorized);
             }
         };
-        exports.apiStateEmitter.on('authorized', authorizedListener);
+        exports.apiStateEmitter.on(exports.authorizedEvent, authorizedListener);
         var readyListener = function () {
             if (!aborted) {
                 setGapi(exports.apiSingleton.gapi);
                 setHookReady(true);
             }
         };
-        exports.apiStateEmitter.on('ready', readyListener);
+        exports.apiStateEmitter.on(exports.readyEvent, readyListener);
         return function () {
             aborted = true;
-            exports.apiStateEmitter.off('authorized', authorizedListener);
-            exports.apiStateEmitter.off('ready', readyListener);
+            exports.apiStateEmitter.off(exports.authorizedEvent, authorizedListener);
+            exports.apiStateEmitter.off(exports.readyEvent, readyListener);
         };
     });
     React.useEffect(function () {
@@ -107,8 +112,8 @@ exports.useAnalyticsApi = function () {
                             setAuthorized(exports.apiSingleton.authorized);
                             // This hook is ready, but we need to update other hooks subscribed
                             // to the singleton emitter
-                            exports.apiStateEmitter.emit('ready');
-                            exports.apiStateEmitter.emit('authorized', exports.apiSingleton.authorized);
+                            exports.apiStateEmitter.emit(exports.readyEvent);
+                            exports.apiStateEmitter.emit(exports.authorizedEvent, exports.apiSingleton.authorized);
                         });
                     }
                     else {

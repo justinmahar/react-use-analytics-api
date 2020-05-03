@@ -21,7 +21,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var useAnalyticsApi_1 = require("./useAnalyticsApi");
 /**
- * See documentation: https://devboldly.github.io/react-use-analytics-api/useAuthorize
+ * See documentation: [useAuthorize](https://devboldly.github.io/react-use-analytics-api/useAuthorize)
  *
  * The `useAuthorize` hook can be used to authorize the user via the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) in several ways:
  * - Render an authorize button using a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id)
@@ -43,10 +43,10 @@ exports.useAuthorize = function (gapi, options, onSignIn) {
                 setAuthorized(isAuthorized);
             }
         };
-        useAnalyticsApi_1.apiStateEmitter.on('authorized', authorizedListener);
+        useAnalyticsApi_1.apiStateEmitter.on(useAnalyticsApi_1.authorizedEvent, authorizedListener);
         return function () {
             aborted = true;
-            useAnalyticsApi_1.apiStateEmitter.off('authorized', authorizedListener);
+            useAnalyticsApi_1.apiStateEmitter.off(useAnalyticsApi_1.authorizedEvent, authorizedListener);
         };
     });
     React.useEffect(function () {
@@ -58,7 +58,7 @@ exports.useAuthorize = function (gapi, options, onSignIn) {
                         setAuthorized(true);
                     }
                     useAnalyticsApi_1.apiSingleton.authorized = true;
-                    useAnalyticsApi_1.apiStateEmitter.emit('authorized', true);
+                    useAnalyticsApi_1.apiStateEmitter.emit(useAnalyticsApi_1.authorizedEvent, true);
                     if (typeof onSignIn !== 'undefined') {
                         onSignIn();
                     }

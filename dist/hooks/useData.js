@@ -8,29 +8,33 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var useAnalyticsApi_1 = require("./useAnalyticsApi");
 /**
- * See documentation: [useSignOut](https://devboldly.github.io/react-use-analytics-api/useSignOut)
+ * See documentation: [useData](https://devboldly.github.io/react-use-analytics-api/useData)
  *
  * This hook returns a `signOut` function that can be used to sign the user out of Google Analytics via the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi).
  *
  * @param gapi The [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi). When `undefined`, calling `signOut` does nothing.
+ * @param query The data [query](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary) for the chart.
+ * @param onSuccess https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data
+ * @param onError
  */
-exports.useSignOut = function (gapi) {
+exports.useData = function (gapi, query, onSuccess, onError) {
+    if (onSuccess === void 0) { onSuccess = function () { return undefined; }; }
+    if (onError === void 0) { onError = function () { return undefined; }; }
     var _a = React.useState(false), run = _a[0], setRun = _a[1];
     React.useEffect(function () {
-        var _a, _b;
         if (typeof gapi !== 'undefined' && run) {
             setRun(false);
-            (_b = (_a = gapi === null || gapi === void 0 ? void 0 : gapi.analytics) === null || _a === void 0 ? void 0 : _a.auth) === null || _b === void 0 ? void 0 : _b.signOut();
-            useAnalyticsApi_1.apiSingleton.authorized = false;
-            useAnalyticsApi_1.apiStateEmitter.emit(useAnalyticsApi_1.authorizedEvent, false);
+            var report = new gapi.analytics.report.Data({ query: query });
+            report.on('success', onSuccess);
+            report.on('error', onError);
+            report.execute();
         }
-    }, [gapi, run]);
-    var signOut = function () {
-        if (typeof gapi !== 'undefined' && !run) {
+    }, [gapi, onError, onSuccess, query, run]);
+    var execute = React.useCallback(function () {
+        if (typeof gapi !== 'undefined') {
             setRun(true);
         }
-    };
-    return signOut;
+    }, [gapi]);
+    return execute;
 };
