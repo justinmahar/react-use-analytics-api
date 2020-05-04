@@ -1,6 +1,6 @@
 {
   "name": "react-use-analytics-api",
-  "version": "1.4.13",
+  "version": "1.4.14",
   "author": "DevBoldly <devboldly@gmail.com>",
   "description": "React hook for loading the Google Analytics Embed API.",
   "homepage": "https://devboldly.github.io/react-use-analytics-api/",
