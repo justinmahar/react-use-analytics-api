@@ -125,7 +125,17 @@ exports.useAnalyticsApi = function () {
         catch (e) {
             setError(e);
         }
-    }, [setAuthorized]);
+    }, []);
+    React.useEffect(function () {
+        // Ensure we stay current in case another hook has made changes
+        if (!hookReady && !!exports.apiSingleton.gapi) {
+            setGapi(exports.apiSingleton.gapi);
+            setHookReady(true);
+        }
+        if (authorized !== exports.apiSingleton.authorized) {
+            setAuthorized(exports.apiSingleton.authorized);
+        }
+    });
     return { ready: hookReady, gapi: gapi, error: error, authorized: !!authorized };
 };
 /**
