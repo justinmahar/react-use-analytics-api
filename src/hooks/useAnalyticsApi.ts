@@ -139,7 +139,18 @@ export const useAnalyticsApi = (): GoogleAnalyticsEmbedAPIHook => {
     } catch (e) {
       setError(e);
     }
-  }, [setAuthorized]);
+  }, []);
+
+  React.useEffect(() => {
+    // Ensure we stay current in case another hook has made changes
+    if (!hookReady && !!apiSingleton.gapi) {
+      setGapi(apiSingleton.gapi);
+      setHookReady(true);
+    }
+    if (authorized !== apiSingleton.authorized) {
+      setAuthorized(apiSingleton.authorized);
+    }
+  });
 
   return { ready: hookReady, gapi, error, authorized: !!authorized };
 };
@@ -150,11 +161,11 @@ export const useAnalyticsApi = (): GoogleAnalyticsEmbedAPIHook => {
  */
 const loadGoogleApi = (): void => {
   if (typeof window !== 'undefined') {
-    (function(w: any, d: any, s: any) {
+    (function (w: any, d: any, s: any) {
       const g: any = w.gapi || (w.gapi = {} as GoogleAnalyticsEmbedAPI);
       g.analytics = {
         q: [],
-        ready: function(cb: any) {
+        ready: function (cb: any) {
           this.q.push(cb);
         },
       };
@@ -162,7 +173,7 @@ const loadGoogleApi = (): void => {
       const fjs = d.getElementsByTagName(s)[0];
       js.src = 'https://apis.google.com/js/platform.js';
       fjs.parentNode.insertBefore(js, fjs);
-      js.onload = function() {
+      js.onload = function () {
         g.load('analytics');
       };
     })(window, document, 'script');

@@ -247,3 +247,20 @@ export const MultipleGoogleAnalyticsEmbedApiStory = () => (
 MultipleGoogleAnalyticsEmbedApiStory.story = {
   name: 'Multiple API Hook Calls',
 };
+
+const HookComponentMultiEmbed = props => {
+  const analyticsApi = useAnalyticsApi();
+  const analyticsApi2 = useAnalyticsApi();
+  console.log('analyticsApi', analyticsApi);
+  console.log('analyticsApi2', analyticsApi2);
+  return <HookComponent />;
+};
+
+export const MultipleEmbedsOneComponentStory = () => (
+  <>
+    <HookComponentMultiEmbed />
+  </>
+);
+MultipleEmbedsOneComponentStory.story = {
+  name: 'Multiple API Hook Calls In One Component',
+};
