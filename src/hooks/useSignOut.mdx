@@ -4,8 +4,6 @@ menu: Hooks
 route: /useSignOut
 ---
 
-import { UseAuthorizeExample } from '../__docz__/components/UseAuthorizeExample';
-
 <h1>useSignOut</h1>
 
 ## Description
@@ -15,7 +13,7 @@ This hook returns a `signOut` function that can be used to sign the user out of 
 ## Usage
 
 ```jsx
-import { signOut } from 'react-use-analytics-api';
+import { signOut } from "react-use-analytics-api";
 ```
 
 In your function component:
@@ -32,9 +30,9 @@ Provide the hook with `gapi`, the [Google Analytics Embed API](/useAnalyticsApi)
 
 ### Arguments
 
-| Argument | Type | Description |
-|----------|------|-------------|
-| gapi | `GoogleAnalyticsEmbedAPI` &#124; `undefined` | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, calling `signOut` does nothing. |
+| Argument | Type                                         | Description                                                                                           |
+| -------- | -------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| gapi     | `GoogleAnalyticsEmbedAPI` &#124; `undefined` | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, calling `signOut` does nothing. |
 
 ### Return
 
@@ -48,26 +46,27 @@ When `gapi` is not `undefined`, this function calls [`gapi.auth.signOut`](https:
 
 ## Example
 
-<div style={{ border: 'solid 2px #67788a', padding: '20px' }}>
-  <UseAuthorizeExample />
-</div>
-
 ```jsx
-import * as React from 'react';
-import { useAnalyticsApi, useAuthorize, useSignOut } from 'react-use-analytics-api';
+import * as React from "react";
+import {
+  useAnalyticsApi,
+  useAuthorize,
+  useSignOut,
+} from "react-use-analytics-api";
 
 export function UseSignOutExample(props) {
   const { ready, gapi, authorized, error } = useAnalyticsApi();
   const authorize = useAuthorize(gapi, {
     clientId,
-    container: 'authorize-container-id',
+    container: "authorize-container-id",
   });
   const signOut = useSignOut(gapi);
 
   // Workaround for API limitation
   const [authorizeCalled, setAuthorizeCalled] = React.useState(false);
   const authDiv = React.useRef(null);
-  const hasAuthElements = authDiv.current && authDiv?.current?.children?.length > 0;
+  const hasAuthElements =
+    authDiv.current && authDiv?.current?.children?.length > 0;
 
   React.useEffect(() => {
     if (ready && !error && !authorizeCalled) {
@@ -83,12 +82,15 @@ export function UseSignOutExample(props) {
           <div>
             {authorized && (
               <div>
-                ☀️ Logged into Google Analytics! <button onClick={() => signOut()}>Sign Out</button>
+                ☀️ Logged into Google Analytics!{" "}
+                <button onClick={() => signOut()}>Sign Out</button>
               </div>
             )}
             {!authorized && <div>🔐 Not logged into Google Analytics</div>}
             <div id="authorize-container-id" ref={authDiv} />
-            {!authorized && authorizeCalled && !hasAuthElements && <div>🔄 Refresh the page to access analytics.</div>}
+            {!authorized && authorizeCalled && !hasAuthElements && (
+              <div>🔄 Refresh the page to access analytics.</div>
+            )}
           </div>
         ) : (
           <div>⌛ Loading...</div>

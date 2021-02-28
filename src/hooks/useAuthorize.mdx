@@ -4,8 +4,6 @@ menu: Hooks
 route: /useAuthorize
 ---
 
-import { UseAuthorizeExample } from "../__docz__/components/UseAuthorizeExample";
-
 <h1>useAuthorize</h1>
 
 ## Description
@@ -90,10 +88,6 @@ Due to an [API limitation](#limitations), the authorize button can only be rende
 To see this happening, use the sidebar to navigate to another page on this site (which doesn't trigger a full page reload), then come back to this one. The API will no longer render the authorize button in the example below.
 
 To take this into consideration, we use a `ref` to check if the authorize container has any contents after `authorize` is called. If it's empty when it shouldn't be, we show a prompt to refresh the page. You can replace this with a button that performs a refresh, if you'd like.
-
-<div style={{ border: "solid 2px #67788a", padding: "20px" }}>
-  <UseAuthorizeExample />
-</div>
 
 ```jsx
 import * as React from "react";

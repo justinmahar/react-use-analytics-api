@@ -6,8 +6,6 @@ route: /
 # NOTE: Menu ordering is configured in doczrc.js
 ---
 
-import { Playground } from "docz";
-
 import { SvgIcon } from "../gatsby-theme-docz/tools/SvgIcon";
 import githubSvg from "../__docz__/images/github.svg";
 
@@ -33,7 +31,7 @@ import githubSvg from "../__docz__/images/github.svg";
 
 **React hook for loading the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/).**
 
-👁️ **[Live Demo](/useDataChart#example)**
+👁️ **[Full Example](/useDataChart#example)**
 
 _For components, check out: [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/)_
 
@@ -65,8 +63,8 @@ This library also provides helper hooks for the API's [built-in components](http
   - Google loads the API to `window`, but this hook pulls the API into a singleton to limit `window` dependence.
 - **🤝 Hooks stay synchronized**
   - When calling the API hook in multiple places, changes to readiness and auth will propate to all hooks, keeping them in sync.
-- **✨ Live examples and rich documentation**
-  - Develop easier with plenty of live examples, starting points, and rich docs.
+- **✨ Full examples and rich documentation**
+  - Develop easier with plenty of examples, starting points, and rich docs.
 - **And more!**
 
 ## Installation
@@ -95,7 +93,7 @@ The `authorized` property will be `true` when the user is authorized, `false` ot
 
 From here, you can [authorize the user](/useAuthorize), [render a view selector](/useViewSelector), and [render charts](/useDataChart)... or do [anything else you want](/useAnalyticsApi#using-the-api-itself) with the API!
 
-> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](/useDataChart#example). This is a great starting point for building your own charts dashboard.
+> 🏁 For a full example demonstrating all features of this library including full auth flow, see the [useDataChart example](/useDataChart#example). This is a great starting point for building your own charts dashboard.
 
 ## TypeScript
 

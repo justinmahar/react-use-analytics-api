@@ -20,7 +20,7 @@
 
 Read the **[official documentation](https://justinmahar.github.io/react-use-analytics-api/)**.
 
-👁️ **[Live Demo](https://justinmahar.github.io/react-use-analytics-api/useDataChart#example)**
+👁️ **[Full Example](https://justinmahar.github.io/react-use-analytics-api/useDataChart#example)**
 
 _For components, check out: [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/)_
 
@@ -52,8 +52,8 @@ This library also provides helper hooks for the API's [built-in components](http
   - Google loads the API to `window`, but this hook pulls the API into a singleton to limit `window` dependence.
 - **🤝 Hooks stay synchronized**
   - When calling the API hook in multiple places, changes to readiness and auth will propate to all hooks, keeping them in sync.
-- **✨ Live examples and rich documentation**
-  - Develop easier with plenty of live examples, starting points, and rich docs.
+- **✨ Full examples and rich documentation**
+  - Develop easier with plenty of examples, starting points, and rich docs.
 - **And more!**
 
 ## Installation
@@ -82,7 +82,7 @@ The `authorized` property will be `true` when the user is authorized, `false` ot
 
 From here, you can [authorize the user](https://justinmahar.github.io/react-use-analytics-api/useAuthorize), [render a view selector](https://justinmahar.github.io/react-use-analytics-api/useViewSelector), and [render charts](https://justinmahar.github.io/react-use-analytics-api/useDataChart)... or do [anything else you want](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi#using-the-api-itself) with the API!
 
-> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://justinmahar.github.io/react-use-analytics-api/useDataChart#example). This is a great starting point for building your own charts dashboard. You can also check out [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/) which is built on this hooks library.
+> 🏁 For a full example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://justinmahar.github.io/react-use-analytics-api/useDataChart#example). This is a great starting point for building your own charts dashboard. You can also check out [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/) which is built on this hooks library.
 
 ## TypeScript
 
