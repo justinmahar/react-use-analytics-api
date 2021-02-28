@@ -6,21 +6,27 @@ route: /
 # NOTE: Menu ordering is configured in doczrc.js
 ---
 
-import { Playground } from 'docz';
+import { Playground } from "docz";
 
-import { SvgIcon } from 'dboldly-react-tools';
-import githubSvg from '../__docz__/images/github.svg';
+import { SvgIcon } from "dboldly-react-tools";
+import githubSvg from "../__docz__/images/github.svg";
 
-<div style={{
-	display: 'flex',
-	alignItems: 'baseline',
-}}>
+<div
+  style={{
+    display: "flex",
+    alignItems: "baseline",
+  }}
+>
   <div>
     <h1>React Use Analytics API</h1>
   </div>
   <div>
-    <a href="https://github.com/devboldly/react-use-analytics-api" target="_blank" rel="noopener noreferrer">
-      <SvgIcon src={githubSvg} size={28} style={{ margin: '0 0 0 20px' }} />
+    <a
+      href="https://github.com/justinmahar/react-use-analytics-api"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <SvgIcon src={githubSvg} size={28} style={{ margin: "0 0 0 20px" }} />
     </a>
   </div>
 </div>
@@ -29,7 +35,7 @@ import githubSvg from '../__docz__/images/github.svg';
 
 👁️ **[Live Demo](/useDataChart#example)**
 
-*For components, check out: [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/)*
+_For components, check out: [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/)_
 
 ## Overview
 
@@ -45,7 +51,7 @@ This library also provides helper hooks for the API's [built-in components](http
 - [useData](/useData) - Query [data](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data) from the Google Analytics Core Reporting API and get back the results
 - [useSignOut](/useSignOut) - [Sign the user out](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth)
 
-> **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/).
+> **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/).
 
 ### Features include:
 
@@ -74,10 +80,10 @@ npm i react-use-analytics-api
 To load the Google Analytics Embed API, use the [`useAnalyticsApi`](/useAnalyticsApi) hook:
 
 ```jsx
-import { useAnalyticsApi } from 'react-use-analytics-api';
+import { useAnalyticsApi } from "react-use-analytics-api";
 ```
 
-Then in your function component: 
+Then in your function component:
 
 ```jsx
 const { ready, gapi, authorized, error } = useAnalyticsApi();
@@ -85,7 +91,7 @@ const { ready, gapi, authorized, error } = useAnalyticsApi();
 
 When `ready` is `true`, the `gapi` object will be set to the loaded and ready-to-use [Google Analytics Embed API](/useAnalyticsApi). The `gapi` object will be `undefined` until it is ready to use.
 
-The `authorized` property will be `true` when the user is authorized, `false` otherwise. 
+The `authorized` property will be `true` when the user is authorized, `false` otherwise.
 
 From here, you can [authorize the user](/useAuthorize), [render a view selector](/useViewSelector), and [render charts](/useDataChart)... or do [anything else you want](/useAnalyticsApi#using-the-api-itself) with the API!
 
@@ -105,6 +111,6 @@ For major changes, open an issue first to discuss what you'd like to change.
 
 See [Kindling](https://tinyurl.com/kindlingscripts) for npm script documentation.
 
-## ⭐ Found It Helpful? [Star It!](https://github.com/devboldly/react-use-analytics-api/stargazers)
+## ⭐ Found It Helpful? [Star It!](https://github.com/justinmahar/react-use-analytics-api/stargazers)
 
-If you found this project helpful, let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
+If you found this project helpful, let the community know by giving it a [star](https://github.com/justinmahar/react-use-analytics-api/stargazers): [👉⭐](https://github.com/justinmahar/react-use-analytics-api/stargazers)

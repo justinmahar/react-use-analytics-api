@@ -27,15 +27,15 @@ export interface AuthorizeOptions {
     };
 }
 /**
- * See documentation: [useAuthorize](https://devboldly.github.io/react-use-analytics-api/useAuthorize)
+ * See documentation: [useAuthorize](https://justinmahar.github.io/react-use-analytics-api/useAuthorize)
  *
- * The `useAuthorize` hook can be used to authorize the user via the [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) in several ways:
- * - Render an authorize button using a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id)
+ * The `useAuthorize` hook can be used to authorize the user via the [Google Analytics Embed API](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi) in several ways:
+ * - Render an authorize button using a [Client ID](https://justinmahar.github.io/react-analytics-charts/google-oauth-client-id)
  * - Authorize with an [access token](https://ga-dev-tools.appspot.com/embed-api/server-side-authorization/)
  *
  * The user must be authorized before the API can query for things like chart data.
  *
- * @param gapi The [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi). When `undefined`, calling `authorize` does nothing.
+ * @param gapi The [Google Analytics Embed API](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi). When `undefined`, calling `authorize` does nothing.
  * @param options The [options](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options) for the authorization.
  * @param onSignIn Called on a successful sign-in. You can use this to do things like change the view on auth success.
  */

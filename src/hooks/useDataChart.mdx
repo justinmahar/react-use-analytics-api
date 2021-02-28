@@ -4,7 +4,7 @@ menu: Hooks
 route: /useDataChart
 ---
 
-import { UseDataChartExample } from '../__docz__/components/UseDataChartExample';
+import { UseDataChartExample } from "../__docz__/components/UseDataChartExample";
 
 <h1>useDataChart</h1>
 
@@ -15,7 +15,7 @@ This hook renders a [DataChart](https://developers.google.com/analytics/devguide
 ## Usage
 
 ```jsx
-import { useDataChart } from 'react-use-analytics-api';
+import { useDataChart } from "react-use-analytics-api";
 ```
 
 In your function component:
@@ -23,16 +23,16 @@ In your function component:
 ```jsx
 const query = {
   ids: viewId,
-  'start-date': '28daysAgo',
-  'end-date': 'today',
-  metrics: 'ga:sessions',
-  dimensions: 'ga:date',
+  "start-date": "28daysAgo",
+  "end-date": "today",
+  metrics: "ga:sessions",
+  dimensions: "ga:date",
 };
 const chart = {
-  container: 'my-chart-container',
-  type: 'BAR',
+  container: "my-chart-container",
+  type: "BAR",
   options: {
-    title: 'Sessions (28 Days)',
+    title: "Sessions (28 Days)",
   },
 };
 useDataChart(gapi, query, chart);
@@ -50,11 +50,11 @@ Provide the hook with with [`gapi`](/useAnalyticsApi), a [query](https://develop
 
 ### Arguments
 
-| Argument | Type | Description |
-|----------|------|-------------|
-| gapi | `GoogleAnalyticsEmbedAPI` &#124; `undefined` | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, this hook does nothing. |
-| query | [`Query`](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary) | The data [query](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary) for the chart. |
-| chart | [`Chart`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart) | The [chart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart) to render. This determines its appearance. |
+| Argument | Type                                                                                                          | Description                                                                                                                                                |
+| -------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| gapi     | `GoogleAnalyticsEmbedAPI` &#124; `undefined`                                                                  | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, this hook does nothing.                                                              |
+| query    | [`Query`](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary)            | The data [query](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#q_summary) for the chart.                                   |
+| chart    | [`Chart`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart) | The [chart](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#datachart) to render. This determines its appearance. |
 
 ### Return
 
@@ -62,11 +62,12 @@ Provide the hook with with [`gapi`](/useAnalyticsApi), a [query](https://develop
 
 ## Example
 
-The following example renders a chart using [`useDataChart`](/useDataChart). 
+The following example renders a chart using [`useDataChart`](/useDataChart).
 
 This includes the following:
+
 - Load the Google Analytics Embed API using [`useAnalyticsApi`](/useAnalyticsApi).
-- Authorize the user with a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id) using [`useAuthorize`](/useAuthorize).
+- Authorize the user with a [Client ID](https://justinmahar.github.io/react-analytics-charts/google-oauth-client-id) using [`useAuthorize`](/useAuthorize).
 - Show a view selector using [`useViewSelector`](/useViewSelector).
   - This is how the user chooses which Analytics view ID to use for the data query. You can hardcode a view ID if you'd like.
 - Render the chart using [`useDataChart`](/useDataChart).
@@ -74,37 +75,41 @@ This includes the following:
 
 > 🏁 This example fully demonstrates use of this library, including full authorization flow. You can use it as a starting point.
 
-<div style={{ border: 'solid 2px #67788a', padding: '20px' }}>
+<div style={{ border: "solid 2px #67788a", padding: "20px" }}>
   <UseDataChartExample />
 </div>
 
 ```jsx
-import * as React from 'react';
+import * as React from "react";
 import {
   useAnalyticsApi,
   useAuthorize,
   useDataChart,
   useSignOut,
   useViewSelector,
-} from 'react-use-analytics-api';
+} from "react-use-analytics-api";
 
 export function UseDataChartExample() {
   const { ready, gapi, authorized, error } = useAnalyticsApi();
   const [viewId, setViewId] = React.useState();
-  const viewSelectorContainerId = 'view-selector-container';
-  useViewSelector(authorized ? gapi : undefined, viewSelectorContainerId, viewId => setViewId(viewId));
+  const viewSelectorContainerId = "view-selector-container";
+  useViewSelector(
+    authorized ? gapi : undefined,
+    viewSelectorContainerId,
+    (viewId) => setViewId(viewId)
+  );
   const query = {
     ids: viewId,
-    'start-date': '28daysAgo',
-    'end-date': 'today',
-    metrics: 'ga:sessions',
-    dimensions: 'ga:date',
+    "start-date": "28daysAgo",
+    "end-date": "today",
+    metrics: "ga:sessions",
+    dimensions: "ga:date",
   };
   const chart = {
-    container: 'data-chart-container',
-    type: 'LINE',
+    container: "data-chart-container",
+    type: "LINE",
     options: {
-      title: 'Sessions (28 Days)',
+      title: "Sessions (28 Days)",
     },
   };
   useDataChart(authorized ? gapi : undefined, query, chart);
@@ -112,11 +117,12 @@ export function UseDataChartExample() {
   // Workaround for API limitation - see useAuthorize docs
   const authDiv = React.useRef(null);
   const [authorizeCalled, setAuthorizeCalled] = React.useState(false);
-  const hasAuthElements = authDiv.current && authDiv?.current?.children?.length > 0;
+  const hasAuthElements =
+    authDiv.current && authDiv?.current?.children?.length > 0;
 
   const authorize = useAuthorize(gapi, {
     clientId,
-    container: 'authorize-container-id',
+    container: "authorize-container-id",
   });
   const signOut = useSignOut(gapi);
 
@@ -134,7 +140,7 @@ export function UseDataChartExample() {
         <div>
           {authorized && (
             <div>
-              <div style={{ marginTop: '30px' }}>
+              <div style={{ marginTop: "30px" }}>
                 <div className="data-chart" id="data-chart-container" />
               </div>
               <div id={viewSelectorContainerId} />

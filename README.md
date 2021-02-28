@@ -1,5 +1,5 @@
 <h2 align="center">
-  <a href="https://github.com/devboldly/react-use-analytics-api">React Use Analytics API</a>
+  <a href="https://github.com/justinmahar/react-use-analytics-api">React Use Analytics API</a>
 </h2>
 <h3 align="center">
   React hook for loading the <a href="https://ga-dev-tools.appspot.com/embed-api/">Google Analytics Embed API</a>.
@@ -8,25 +8,25 @@
   <a href="https://badge.fury.io/js/react-use-analytics-api">
     <img src="https://badge.fury.io/js/react-use-analytics-api.svg" alt="npm Version"/>
   </a>
-  <a href="https://github.com/devboldly/react-use-analytics-api/actions?query=workflow%3ATests">
-    <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Tests/badge.svg" alt="Tests Status"/>
+  <a href="https://github.com/justinmahar/react-use-analytics-api/actions?query=workflow%3ATests">
+    <img src="https://github.com/justinmahar/react-use-analytics-api/workflows/Tests/badge.svg" alt="Tests Status"/>
   </a>
-  <a href="https://github.com/devboldly/react-use-analytics-api/actions?query=workflow%3ADeploy">
-    <img src="https://github.com/devboldly/react-use-analytics-api/workflows/Deploy/badge.svg" alt="Deploy Status"/>
+  <a href="https://github.com/justinmahar/react-use-analytics-api/actions?query=workflow%3ADeploy">
+    <img src="https://github.com/justinmahar/react-use-analytics-api/workflows/Deploy/badge.svg" alt="Deploy Status"/>
   </a>
 </p>
 
 ## Documentation
 
-Read the **[official documentation](https://devboldly.github.io/react-use-analytics-api/)**.
+Read the **[official documentation](https://justinmahar.github.io/react-use-analytics-api/)**.
 
-👁️ **[Live Demo](https://devboldly.github.io/react-use-analytics-api/useDataChart#example)**
+👁️ **[Live Demo](https://justinmahar.github.io/react-use-analytics-api/useDataChart#example)**
 
-*For components, check out: [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/)*
+_For components, check out: [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/)_
 
 ## Overview
 
-The [`useAnalyticsApi`](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) hook can be used to load and ready the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) in React.
+The [`useAnalyticsApi`](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi) hook can be used to load and ready the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/) in React.
 
 > **What is the Google Analytics Embed API?** It is a JavaScript library that allows you to easily create and embed Google Analytics charts on a third-party website in a matter of minutes.
 
@@ -38,7 +38,7 @@ This library also provides helper hooks for the API's [built-in components](http
 - [useData](/useData) - Query [data](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data) from the Google Analytics Core Reporting API and get back the results
 - [useSignOut](/useSignOut) - [Sign the user out](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth)
 
-> **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/).
+> **Looking for components?** A full React component library that wraps these hooks is now available! Check out [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/).
 
 ### Features include:
 
@@ -64,25 +64,25 @@ npm i react-use-analytics-api
 
 ## Quick Start
 
-To load the Google Analytics Embed API, use the [`useAnalyticsApi`](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi) hook:
+To load the Google Analytics Embed API, use the [`useAnalyticsApi`](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi) hook:
 
 ```jsx
-import { useAnalyticsApi } from 'react-use-analytics-api';
+import { useAnalyticsApi } from "react-use-analytics-api";
 ```
 
-Then in your function component: 
+Then in your function component:
 
 ```jsx
 const { ready, gapi, authorized, error } = useAnalyticsApi();
 ```
 
-When `ready` is `true`, the `gapi` object will be set to the loaded and ready-to-use [Google Analytics Embed API](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi). The `gapi` object will be `undefined` until it is ready to use.
+When `ready` is `true`, the `gapi` object will be set to the loaded and ready-to-use [Google Analytics Embed API](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi). The `gapi` object will be `undefined` until it is ready to use.
 
-The `authorized` property will be `true` when the user is authorized, `false` otherwise. 
+The `authorized` property will be `true` when the user is authorized, `false` otherwise.
 
-From here, you can [authorize the user](https://devboldly.github.io/react-use-analytics-api/useAuthorize), [render a view selector](https://devboldly.github.io/react-use-analytics-api/useViewSelector), and [render charts](https://devboldly.github.io/react-use-analytics-api/useDataChart)... or do [anything else you want](https://devboldly.github.io/react-use-analytics-api/useAnalyticsApi#using-the-api-itself) with the API!
+From here, you can [authorize the user](https://justinmahar.github.io/react-use-analytics-api/useAuthorize), [render a view selector](https://justinmahar.github.io/react-use-analytics-api/useViewSelector), and [render charts](https://justinmahar.github.io/react-use-analytics-api/useDataChart)... or do [anything else you want](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi#using-the-api-itself) with the API!
 
-> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://devboldly.github.io/react-use-analytics-api/useDataChart#example). This is a great starting point for building your own charts dashboard. You can also check out [React Analytics Charts](https://devboldly.github.io/react-analytics-charts/) which is built on this hooks library.
+> 🏁 For a live example demonstrating all features of this library including full auth flow, see the [useDataChart example](https://justinmahar.github.io/react-use-analytics-api/useDataChart#example). This is a great starting point for building your own charts dashboard. You can also check out [React Analytics Charts](https://justinmahar.github.io/react-analytics-charts/) which is built on this hooks library.
 
 ## TypeScript
 
@@ -102,14 +102,14 @@ For major changes, open an issue first to discuss what you'd like to change.
 
 See [Kindling](https://tinyurl.com/kindlingscripts) for npm script documentation.
 
-## ⭐ Found It Helpful? [Star It!](https://github.com/devboldly/react-use-analytics-api/stargazers)
+## ⭐ Found It Helpful? [Star It!](https://github.com/justinmahar/react-use-analytics-api/stargazers)
 
-If you found this project helpful, let the community know by giving it a [star](https://github.com/devboldly/react-use-analytics-api/stargazers): [👉⭐](https://github.com/devboldly/react-use-analytics-api/stargazers)
+If you found this project helpful, let the community know by giving it a [star](https://github.com/justinmahar/react-use-analytics-api/stargazers): [👉⭐](https://github.com/justinmahar/react-use-analytics-api/stargazers)
 
 ## MIT License
 
 ```
-Copyright © 2020 DevBoldly https://devboldly.com
+Copyright © 2020 Justin Mahar https://github.com/justinmahar
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

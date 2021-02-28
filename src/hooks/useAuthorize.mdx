@@ -4,14 +4,15 @@ menu: Hooks
 route: /useAuthorize
 ---
 
-import { UseAuthorizeExample } from '../__docz__/components/UseAuthorizeExample';
+import { UseAuthorizeExample } from "../__docz__/components/UseAuthorizeExample";
 
 <h1>useAuthorize</h1>
 
 ## Description
 
 The `useAuthorize` hook can be used to authorize the user via the [Google Analytics Embed API](/useAnalyticsApi) in several ways:
-- Render an authorize button using a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id)
+
+- Render an authorize button using a [Client ID](https://justinmahar.github.io/react-analytics-charts/google-oauth-client-id)
 - Authorize with an [access token](https://ga-dev-tools.appspot.com/embed-api/server-side-authorization/)
 
 The user must be authorized before the API can query for things like chart data.
@@ -19,17 +20,18 @@ The user must be authorized before the API can query for things like chart data.
 ## Usage
 
 ```jsx
-import { useAuthorize } from 'react-use-analytics-api';
+import { useAuthorize } from "react-use-analytics-api";
 ```
 
 The `useAuthorize` hook returns an `authorize` function that calls [`gapi.auth.authorize`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth) using the provided [auth options](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options).
 
-### Using A [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id)
+### Using A [Client ID](https://justinmahar.github.io/react-analytics-charts/google-oauth-client-id)
 
 ```jsx
 const authorize = useAuthorize(gapi, {
-  clientId: '1234567890123-abc123def456ghi789jkl012mno345pq.apps.googleusercontent.com',
-  container: 'authorize-container-id',
+  clientId:
+    "1234567890123-abc123def456ghi789jkl012mno345pq.apps.googleusercontent.com",
+  container: "authorize-container-id",
 });
 ```
 
@@ -41,7 +43,7 @@ The contents of the container are not managed by React, so be sure to leave it e
 
 #### Limitations
 
-**Google's API doesn't render the authorize button more than once per page load.** Be sure to take this into consideration. 
+**Google's API doesn't render the authorize button more than once per page load.** Be sure to take this into consideration.
 
 A novel approach is used in the [example below](#example) to detect whether the container is empty and prompt the user to refresh the page.
 
@@ -50,7 +52,7 @@ A novel approach is used in the [example below](#example) to detect whether the 
 ```jsx
 const authorize = useAuthorize(gapi, {
   serverAuth: {
-    access_token: 'ACCESS_TOKEN_GOES_HERE',
+    access_token: "ACCESS_TOKEN_GOES_HERE",
   },
 });
 ```
@@ -63,11 +65,11 @@ Call `authorize` to authorize using the access token provided.
 
 ### Arguments
 
-| Argument | Type | Description |
-|----------|------|-------------|
-| gapi | `GoogleAnalyticsEmbedAPI` &#124; `undefined` | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, calling `authorize` does nothing. |
-| options | [`AuthorizeOptions`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options) | The [options](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options) for the authorization. |
-| onSignIn | `() => void` | Called on a successful sign-in. You can use this to do things like change the view on auth success. |
+| Argument | Type                                                                                                                        | Description                                                                                                                                 |
+| -------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| gapi     | `GoogleAnalyticsEmbedAPI` &#124; `undefined`                                                                                | The [Google Analytics Embed API](/useAnalyticsApi). When `undefined`, calling `authorize` does nothing.                                     |
+| options  | [`AuthorizeOptions`](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options) | The [options](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options) for the authorization. |
+| onSignIn | `() => void`                                                                                                                | Called on a successful sign-in. You can use this to do things like change the view on auth success.                                         |
 
 ### Return
 
@@ -81,34 +83,39 @@ When `gapi` is not `undefined`, this function calls [`gapi.auth.authorize`](http
 
 ## Example
 
-The following example demonstrates use of the `useAuthorize` hook with a [Client ID](https://devboldly.github.io/react-analytics-charts/google-oauth-client-id) to sign a user into Google Analytics.
+The following example demonstrates use of the `useAuthorize` hook with a [Client ID](https://justinmahar.github.io/react-analytics-charts/google-oauth-client-id) to sign a user into Google Analytics.
 
-Due to an [API limitation](#limitations), the authorize button can only be rendered to the page once per page load. This means once the container `div` is destroyed and re-rendered by React, the authorize button will no longer appear. 
+Due to an [API limitation](#limitations), the authorize button can only be rendered to the page once per page load. This means once the container `div` is destroyed and re-rendered by React, the authorize button will no longer appear.
 
 To see this happening, use the sidebar to navigate to another page on this site (which doesn't trigger a full page reload), then come back to this one. The API will no longer render the authorize button in the example below.
 
 To take this into consideration, we use a `ref` to check if the authorize container has any contents after `authorize` is called. If it's empty when it shouldn't be, we show a prompt to refresh the page. You can replace this with a button that performs a refresh, if you'd like.
 
-<div style={{ border: 'solid 2px #67788a', padding: '20px' }}>
+<div style={{ border: "solid 2px #67788a", padding: "20px" }}>
   <UseAuthorizeExample />
 </div>
 
 ```jsx
-import * as React from 'react';
-import { useAnalyticsApi, useAuthorize, useSignOut } from 'react-use-analytics-api';
+import * as React from "react";
+import {
+  useAnalyticsApi,
+  useAuthorize,
+  useSignOut,
+} from "react-use-analytics-api";
 
 export function UseAuthorizeExample(props) {
   const { ready, gapi, authorized, error } = useAnalyticsApi();
   const authorize = useAuthorize(gapi, {
     clientId,
-    container: 'authorize-container-id',
+    container: "authorize-container-id",
   });
   const signOut = useSignOut(gapi);
 
   // Workaround for API limitation
   const [authorizeCalled, setAuthorizeCalled] = React.useState(false);
   const authDiv = React.useRef(null);
-  const hasAuthElements = authDiv.current && authDiv?.current?.children?.length > 0;
+  const hasAuthElements =
+    authDiv.current && authDiv?.current?.children?.length > 0;
 
   React.useEffect(() => {
     if (ready && !error && !authorizeCalled) {
@@ -124,12 +131,15 @@ export function UseAuthorizeExample(props) {
           <div>
             {authorized && (
               <div>
-                ☀️ Logged into Google Analytics! <button onClick={() => signOut()}>Sign Out</button>
+                ☀️ Logged into Google Analytics!{" "}
+                <button onClick={() => signOut()}>Sign Out</button>
               </div>
             )}
             {!authorized && <div>🔐 Not logged into Google Analytics</div>}
             <div id="authorize-container-id" ref={authDiv} />
-            {!authorized && authorizeCalled && !hasAuthElements && <div>🔄 Refresh the page to access analytics.</div>}
+            {!authorized && authorizeCalled && !hasAuthElements && (
+              <div>🔄 Refresh the page to access analytics.</div>
+            )}
           </div>
         ) : (
           <div>⌛ Loading...</div>
@@ -147,14 +157,14 @@ If you authorize or sign out manually outside of this library (and React), you w
 To do this, you can access the emitter and singleton used by the hooks in this library:
 
 ```jsx
-import { apiStateEmitter, apiSingleton } from 'react-use-analytics-api';
+import { apiStateEmitter, apiSingleton } from "react-use-analytics-api";
 ```
 
 Then, when your auth state changes, you can manually update the hooks via the `authorized` event:
 
 ```jsx
 apiSingleton.authorized = isAuthorized;
-apiStateEmitter.emit('authorized', isAuthorized);
+apiStateEmitter.emit("authorized", isAuthorized);
 ```
 
 This will update the authorized state for all existing hooks as well as any new hooks instantiated thereafter.
