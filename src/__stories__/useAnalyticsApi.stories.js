@@ -14,7 +14,7 @@ export default {
   title: 'useAnalyticsApi Hook',
 };
 
-const stringify = (arg: any) => {
+const stringify = (arg) => {
   try {
     return JSON.stringify(arg);
   } catch (e) {
@@ -55,13 +55,13 @@ const errorStyles = {
 
 // Needed to wrap the hook and give it visual representation.
 
-const ChartComponent = props => {
+const ChartComponent = (props) => {
   useDataChart(props.gapi, props.query, props.chart);
 
   return <div className="data-chart" id={props.chart.container} />;
 };
 
-const HookComponent = props => {
+const HookComponent = (props) => {
   const viewSelectorContainerId = `${props.idPrefix ? props.idPrefix + '-' : ''}view-selector-container`;
   const chartContainerId = `${props.idPrefix ? props.idPrefix + '-' : ''}data-chart-container`;
   const authorizeContainerId = `${props.idPrefix ? props.idPrefix + '-' : ''}auth-container`;
@@ -73,7 +73,7 @@ const HookComponent = props => {
     container: authorizeContainerId,
   });
   const [viewId, setViewId] = React.useState();
-  useViewSelector(gapi, viewSelectorContainerId, viewId => setViewId(viewId));
+  useViewSelector(gapi, viewSelectorContainerId, (viewId) => setViewId(viewId));
   const signOut = useSignOut(gapi);
 
   React.useEffect(() => {
@@ -92,8 +92,8 @@ const HookComponent = props => {
   const execute = useData(
     gapi,
     query,
-    response => console.log('Data query response:', response),
-    response => console.error('Data query error:', response)
+    (response) => console.log('Data query response:', response),
+    (response) => console.error('Data query error:', response),
   );
 
   React.useEffect(() => {
@@ -184,7 +184,7 @@ const HookComponent = props => {
         <h5>Analytics API:</h5>
         <ul>
           {analyticsApi ? (
-            Object.keys(analyticsApi).map(v => (
+            Object.keys(analyticsApi).map((v) => (
               <li key={v}>
                 <code>{`${v}: ${stringify(analyticsApi[v])}`}</code>
               </li>
@@ -209,7 +209,7 @@ const HookComponent = props => {
             </h5>
             <ul>
               {gapi ? (
-                Object.keys(gapi).map(v => (
+                Object.keys(gapi).map((v) => (
                   <li key={v}>
                     <code>{`${v}: ${stringify(gapi[v])}`}</code>
                   </li>
@@ -248,7 +248,7 @@ MultipleGoogleAnalyticsEmbedApiStory.story = {
   name: 'Multiple API Hook Calls',
 };
 
-const HookComponentMultiEmbed = props => {
+const HookComponentMultiEmbed = (props) => {
   const analyticsApi = useAnalyticsApi();
   const analyticsApi2 = useAnalyticsApi();
   console.log('analyticsApi', analyticsApi);

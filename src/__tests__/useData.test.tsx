@@ -12,7 +12,7 @@ describe('useData Hook', () => {
         'start-date': '28daysAgo',
         'end-date': 'today',
         ids: 'ga:123456789',
-      })
+      }),
     );
     expect(result.error).toBe(undefined);
   });

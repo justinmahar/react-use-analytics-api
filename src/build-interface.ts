@@ -10,7 +10,7 @@ export const buildTypeScriptInterfaceFromObject = (obj: any, interfaceName: stri
   let result = `interface ${interfaceName} {`;
   if (typeof obj === 'object') {
     const keys: string[] = Object.keys(obj);
-    keys.forEach(key => {
+    keys.forEach((key) => {
       result += buildTypeFromVariable(obj[key], key, excludedVariableNames) + ' ';
     });
   }
@@ -23,7 +23,7 @@ const buildTypeFromVariable = (
   name: string,
   excludedVars: string[] = [],
   depth = 0,
-  maxDepth = 5
+  maxDepth = 5,
 ): string => {
   let result = `${name}: `;
   const typeofvariable = typeof variable;
@@ -40,7 +40,7 @@ const buildTypeFromVariable = (
         } else if (variable !== null) {
           result += '{';
           keys = Object.keys(variable);
-          keys.forEach(key => {
+          keys.forEach((key) => {
             result += buildTypeFromVariable(variable[key], key, excludedVars, depth + 1) + ' ';
           });
           result += '}';

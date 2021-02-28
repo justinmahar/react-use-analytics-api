@@ -21,8 +21,8 @@ describe('useDataChart Hook', () => {
           options: {
             title: 'Sessions By Browser (28 Days)',
           },
-        }
-      )
+        },
+      ),
     );
     expect(result.error).toBe(undefined);
   });

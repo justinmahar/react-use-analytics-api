@@ -16,7 +16,7 @@ export const useData = (
   gapi: GoogleAnalyticsEmbedAPI | undefined,
   query: Query,
   onSuccess: (response: any) => void = () => undefined,
-  onError: (response: any) => void = () => undefined
+  onError: (response: any) => void = () => undefined,
 ): (() => void) => {
   const [run, setRun] = React.useState(false);
 

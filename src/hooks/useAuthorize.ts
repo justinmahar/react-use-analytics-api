@@ -44,7 +44,7 @@ export interface AuthorizeOptions {
 export const useAuthorize = (
   gapi: GoogleAnalyticsEmbedAPI | undefined,
   options: AuthorizeOptions,
-  onSignIn?: () => void
+  onSignIn?: () => void,
 ): (() => void) => {
   const [authorized, setAuthorized] = React.useState<boolean>(apiSingleton.authorized);
   const [run, setRun] = React.useState(false);
