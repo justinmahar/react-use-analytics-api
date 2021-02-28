@@ -6,4 +6,4 @@ import { GoogleAnalyticsEmbedAPI } from './GoogleAnalyticsEmbedAPI';
  *
  * @param gapi The [Google Analytics Embed API](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi). When `undefined`, calling `signOut` does nothing.
  */
-export declare const useSignOut: (gapi: GoogleAnalyticsEmbedAPI | undefined) => () => void;
+export declare const useSignOut: (gapi: GoogleAnalyticsEmbedAPI | undefined) => (() => void);

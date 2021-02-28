@@ -1,17 +1,26 @@
 "use strict";
-var __importStar =
-  (this && this.__importStar) ||
-  function (mod) {
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null)
-      for (var k in mod)
-        if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
     return result;
-  };
+};
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.useAnalyticsApi = exports.readyEvent = exports.authorizedEvent = exports.apiStateEmitter = exports.apiSingleton = void 0;
 var events_1 = require("events");
 var React = __importStar(require("react"));
 /**
@@ -22,30 +31,24 @@ var React = __importStar(require("react"));
  * - `gapi` - Type: [GoogleAnalyticsEmbedAPI](https://developers.google.com/analytics/devguides/reporting/embed/v1) &#124; undefined - The API, or undefined if it's not loaded and ready.
  */
 exports.apiSingleton = {
-  scriptRequested: false,
-  authorized: false,
-  gapi: undefined,
+    scriptRequested: false,
+    authorized: false,
+    gapi: undefined,
 };
 // Check if we have it loaded and ready, and set singleton up.
-if (typeof window !== "undefined") {
-  var win = window;
-  if (win.gapi && win.gapi.analytics) {
-    // At this point, we've requested the script, but it may not be fully loaded yet.
-    exports.apiSingleton.scriptRequested = true;
-    // If we've fully loaded it (all dependencies we need are present), set it.
-    exports.apiSingleton.gapi =
-      !!win.gapi.analytics.ViewSelector &&
-      !!win.gapi.analytics.auth &&
-      !!((_a = win.gapi.analytics) === null || _a === void 0
-        ? void 0
-        : _a.googleCharts.DataChart)
-        ? win.gapi
-        : undefined;
-    // Set whether we're authorized
-    exports.apiSingleton.authorized = win.gapi.analytics.auth
-      ? win.gapi.analytics.auth.isAuthorized()
-      : false;
-  }
+if (typeof window !== 'undefined') {
+    var win = window;
+    if (win.gapi && win.gapi.analytics) {
+        // At this point, we've requested the script, but it may not be fully loaded yet.
+        exports.apiSingleton.scriptRequested = true;
+        // If we've fully loaded it (all dependencies we need are present), set it.
+        exports.apiSingleton.gapi =
+            !!win.gapi.analytics.ViewSelector && !!win.gapi.analytics.auth && !!((_a = win.gapi.analytics) === null || _a === void 0 ? void 0 : _a.googleCharts.DataChart)
+                ? win.gapi
+                : undefined;
+        // Set whether we're authorized
+        exports.apiSingleton.authorized = win.gapi.analytics.auth ? win.gapi.analytics.auth.isAuthorized() : false;
+    }
 }
 /**
  * Used to keep hooks synchronized.
@@ -57,9 +60,9 @@ if (typeof window !== "undefined") {
 exports.apiStateEmitter = new events_1.EventEmitter();
 exports.apiStateEmitter.setMaxListeners(100);
 /** The user is signed in or signed out. */
-exports.authorizedEvent = "authorized";
+exports.authorizedEvent = 'authorized';
 /** The API is loaded and ready. */
-exports.readyEvent = "ready";
+exports.readyEvent = 'ready';
 /**
  * See documentation: [useAnalyticsApi](https://justinmahar.github.io/react-use-analytics-api/useAnalyticsApi)
  *
@@ -71,122 +74,104 @@ exports.readyEvent = "ready";
  * State changes that happen outside of React (such as API readiness and [authorization](https://justinmahar.github.io/react-use-analytics-api/useAuthorize)) are synchronized across all hooks via a singleton emitter effect. This allows you to use the hook in multiple places while keeping them all in sync.
  */
 exports.useAnalyticsApi = function () {
-  var _a = React.useState(exports.apiSingleton.gapi),
-    gapi = _a[0],
-    setGapi = _a[1];
-  var _b = React.useState(typeof exports.apiSingleton.gapi !== "undefined"),
-    hookReady = _b[0],
-    setHookReady = _b[1];
-  var _c = React.useState(exports.apiSingleton.authorized),
-    authorized = _c[0],
-    setAuthorized = _c[1];
-  var _d = React.useState(undefined),
-    error = _d[0],
-    setError = _d[1];
-  React.useEffect(function () {
-    var aborted = false;
-    var authorizedListener = function (isAuthorized) {
-      if (!aborted) {
-        setAuthorized(isAuthorized);
-      }
-    };
-    exports.apiStateEmitter.on(exports.authorizedEvent, authorizedListener);
-    var readyListener = function () {
-      if (!aborted) {
-        setGapi(exports.apiSingleton.gapi);
-        setHookReady(true);
-      }
-    };
-    exports.apiStateEmitter.on(exports.readyEvent, readyListener);
-    return function () {
-      aborted = true;
-      exports.apiStateEmitter.off(exports.authorizedEvent, authorizedListener);
-      exports.apiStateEmitter.off(exports.readyEvent, readyListener);
-    };
-  });
-  React.useEffect(function () {
-    try {
-      if (typeof window !== "undefined") {
-        var win_1 = window;
-        // Only load the script once.
-        if (!exports.apiSingleton.scriptRequested) {
-          exports.apiSingleton.scriptRequested = true;
-          // Call the code from Google to load the API into window.
-          loadGoogleApi();
-          // At this point, gapi has been partially loaded into window.
-          // We're still loading analytics. Google adds an emitter
-          // called ready() that will fire when it's fully loaded.
-          if (
-            win_1.gapi &&
-            win_1.gapi.analytics &&
-            win_1.gapi.analytics.ready
-          ) {
-            win_1.gapi.analytics.ready(function () {
-              // At this point, we can use the Analytics Embed API!
-              exports.apiSingleton.gapi = win_1.gapi;
-              // Set if we're already authorized
-              if (win_1.gapi.analytics.auth.isAuthorized()) {
-                exports.apiSingleton.authorized = true;
-              }
-              // Update the hook's state
-              setGapi(exports.apiSingleton.gapi);
-              setHookReady(true);
-              setAuthorized(exports.apiSingleton.authorized);
-              // This hook is ready, but we need to update other hooks subscribed
-              // to the singleton emitter
-              exports.apiStateEmitter.emit(exports.readyEvent);
-              exports.apiStateEmitter.emit(
-                exports.authorizedEvent,
-                exports.apiSingleton.authorized
-              );
-            });
-          } else {
-            throw new Error("Couldn't add ready listener to gapi analytics.");
-          }
+    var _a = React.useState(exports.apiSingleton.gapi), gapi = _a[0], setGapi = _a[1];
+    var _b = React.useState(typeof exports.apiSingleton.gapi !== 'undefined'), hookReady = _b[0], setHookReady = _b[1];
+    var _c = React.useState(exports.apiSingleton.authorized), authorized = _c[0], setAuthorized = _c[1];
+    var _d = React.useState(undefined), error = _d[0], setError = _d[1];
+    React.useEffect(function () {
+        var aborted = false;
+        var authorizedListener = function (isAuthorized) {
+            if (!aborted) {
+                setAuthorized(isAuthorized);
+            }
+        };
+        exports.apiStateEmitter.on(exports.authorizedEvent, authorizedListener);
+        var readyListener = function () {
+            if (!aborted) {
+                setGapi(exports.apiSingleton.gapi);
+                setHookReady(true);
+            }
+        };
+        exports.apiStateEmitter.on(exports.readyEvent, readyListener);
+        return function () {
+            aborted = true;
+            exports.apiStateEmitter.off(exports.authorizedEvent, authorizedListener);
+            exports.apiStateEmitter.off(exports.readyEvent, readyListener);
+        };
+    });
+    React.useEffect(function () {
+        try {
+            if (typeof window !== 'undefined') {
+                var win_1 = window;
+                // Only load the script once.
+                if (!exports.apiSingleton.scriptRequested) {
+                    exports.apiSingleton.scriptRequested = true;
+                    // Call the code from Google to load the API into window.
+                    loadGoogleApi();
+                    // At this point, gapi has been partially loaded into window.
+                    // We're still loading analytics. Google adds an emitter
+                    // called ready() that will fire when it's fully loaded.
+                    if (win_1.gapi && win_1.gapi.analytics && win_1.gapi.analytics.ready) {
+                        win_1.gapi.analytics.ready(function () {
+                            // At this point, we can use the Analytics Embed API!
+                            exports.apiSingleton.gapi = win_1.gapi;
+                            // Set if we're already authorized
+                            if (win_1.gapi.analytics.auth.isAuthorized()) {
+                                exports.apiSingleton.authorized = true;
+                            }
+                            // Update the hook's state
+                            setGapi(exports.apiSingleton.gapi);
+                            setHookReady(true);
+                            setAuthorized(exports.apiSingleton.authorized);
+                            // This hook is ready, but we need to update other hooks subscribed
+                            // to the singleton emitter
+                            exports.apiStateEmitter.emit(exports.readyEvent);
+                            exports.apiStateEmitter.emit(exports.authorizedEvent, exports.apiSingleton.authorized);
+                        });
+                    }
+                    else {
+                        throw new Error("Couldn't add ready listener to gapi analytics.");
+                    }
+                }
+            }
         }
-      }
-    } catch (e) {
-      setError(e);
-    }
-  }, []);
-  React.useEffect(function () {
-    // Ensure we stay current in case another hook has made changes
-    if (!hookReady && !!exports.apiSingleton.gapi) {
-      setGapi(exports.apiSingleton.gapi);
-      setHookReady(true);
-    }
-    if (authorized !== exports.apiSingleton.authorized) {
-      setAuthorized(exports.apiSingleton.authorized);
-    }
-  });
-  return {
-    ready: hookReady,
-    gapi: gapi,
-    error: error,
-    authorized: !!authorized,
-  };
+        catch (e) {
+            setError(e);
+        }
+    }, []);
+    React.useEffect(function () {
+        // Ensure we stay current in case another hook has made changes
+        if (!hookReady && !!exports.apiSingleton.gapi) {
+            setGapi(exports.apiSingleton.gapi);
+            setHookReady(true);
+        }
+        if (authorized !== exports.apiSingleton.authorized) {
+            setAuthorized(exports.apiSingleton.authorized);
+        }
+    });
+    return { ready: hookReady, gapi: gapi, error: error, authorized: !!authorized };
 };
 /**
  * Ported to TypeScript from:
  * https://developers.google.com/analytics/devguides/reporting/embed/v1/getting-started#step-2
  */
 var loadGoogleApi = function () {
-  if (typeof window !== "undefined") {
-    (function (w, d, s) {
-      var g = w.gapi || (w.gapi = {});
-      g.analytics = {
-        q: [],
-        ready: function (cb) {
-          this.q.push(cb);
-        },
-      };
-      var js = d.createElement(s);
-      var fjs = d.getElementsByTagName(s)[0];
-      js.src = "https://apis.google.com/js/platform.js";
-      fjs.parentNode.insertBefore(js, fjs);
-      js.onload = function () {
-        g.load("analytics");
-      };
-    })(window, document, "script");
-  }
+    if (typeof window !== 'undefined') {
+        (function (w, d, s) {
+            var g = w.gapi || (w.gapi = {});
+            g.analytics = {
+                q: [],
+                ready: function (cb) {
+                    this.q.push(cb);
+                },
+            };
+            var js = d.createElement(s);
+            var fjs = d.getElementsByTagName(s)[0];
+            js.src = 'https://apis.google.com/js/platform.js';
+            fjs.parentNode.insertBefore(js, fjs);
+            js.onload = function () {
+                g.load('analytics');
+            };
+        })(window, document, 'script');
+    }
 };

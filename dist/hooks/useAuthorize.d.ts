@@ -39,4 +39,4 @@ export interface AuthorizeOptions {
  * @param options The [options](https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#auth-options) for the authorization.
  * @param onSignIn Called on a successful sign-in. You can use this to do things like change the view on auth success.
  */
-export declare const useAuthorize: (gapi: GoogleAnalyticsEmbedAPI | undefined, options: AuthorizeOptions, onSignIn?: (() => void) | undefined) => () => void;
+export declare const useAuthorize: (gapi: GoogleAnalyticsEmbedAPI | undefined, options: AuthorizeOptions, onSignIn?: (() => void) | undefined) => (() => void);

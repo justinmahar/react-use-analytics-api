@@ -1,16 +1,25 @@
 "use strict";
-var __importStar =
-  (this && this.__importStar) ||
-  function (mod) {
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null)
-      for (var k in mod)
-        if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
     return result;
-  };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.useData = void 0;
 var React = __importStar(require("react"));
 /**
  * See documentation: [useData](https://justinmahar.github.io/react-use-analytics-api/useData)
@@ -23,38 +32,22 @@ var React = __importStar(require("react"));
  * @param onError
  */
 exports.useData = function (gapi, query, onSuccess, onError) {
-  if (onSuccess === void 0) {
-    onSuccess = function () {
-      return undefined;
-    };
-  }
-  if (onError === void 0) {
-    onError = function () {
-      return undefined;
-    };
-  }
-  var _a = React.useState(false),
-    run = _a[0],
-    setRun = _a[1];
-  React.useEffect(
-    function () {
-      if (typeof gapi !== "undefined" && run) {
-        setRun(false);
-        var report = new gapi.analytics.report.Data({ query: query });
-        report.on("success", onSuccess);
-        report.on("error", onError);
-        report.execute();
-      }
-    },
-    [gapi, onError, onSuccess, query, run]
-  );
-  var execute = React.useCallback(
-    function () {
-      if (typeof gapi !== "undefined") {
-        setRun(true);
-      }
-    },
-    [gapi]
-  );
-  return execute;
+    if (onSuccess === void 0) { onSuccess = function () { return undefined; }; }
+    if (onError === void 0) { onError = function () { return undefined; }; }
+    var _a = React.useState(false), run = _a[0], setRun = _a[1];
+    React.useEffect(function () {
+        if (typeof gapi !== 'undefined' && run) {
+            setRun(false);
+            var report = new gapi.analytics.report.Data({ query: query });
+            report.on('success', onSuccess);
+            report.on('error', onError);
+            report.execute();
+        }
+    }, [gapi, onError, onSuccess, query, run]);
+    var execute = React.useCallback(function () {
+        if (typeof gapi !== 'undefined') {
+            setRun(true);
+        }
+    }, [gapi]);
+    return execute;
 };

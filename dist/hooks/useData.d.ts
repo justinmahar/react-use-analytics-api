@@ -9,4 +9,4 @@ import { GoogleAnalyticsEmbedAPI, Query } from './GoogleAnalyticsEmbedAPI';
  * @param onSuccess https://developers.google.com/analytics/devguides/reporting/embed/v1/component-reference#data
  * @param onError
  */
-export declare const useData: (gapi: GoogleAnalyticsEmbedAPI | undefined, query: Query, onSuccess?: (response: any) => void, onError?: (response: any) => void) => () => void;
+export declare const useData: (gapi: GoogleAnalyticsEmbedAPI | undefined, query: Query, onSuccess?: (response: any) => void, onError?: (response: any) => void) => (() => void);

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.buildTypeScriptInterfaceFromObject = void 0;
 var excludedVariableNames = ['_'];
 /**
  * Use this to create a TypeScript interface for the loaded Google Analytics Embed API object.
