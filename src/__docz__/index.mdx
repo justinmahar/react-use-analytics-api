@@ -6,28 +6,28 @@ route: /
 # NOTE: Menu ordering is configured in doczrc.js
 ---
 
-import { SvgIcon } from "../gatsby-theme-docz/tools/SvgIcon";
-import githubSvg from "../__docz__/images/github.svg";
+import { SvgIcon } from '../gatsby-theme-docz/tools/SvgIcon';
+import githubSvg from '../__docz__/images/github.svg';
+
+# ⛔️ DEPRECATED
 
 <div
   style={{
-    display: "flex",
-    alignItems: "baseline",
+    display: 'flex',
+    alignItems: 'baseline',
   }}
 >
   <div>
     <h1>React Use Analytics API</h1>
   </div>
   <div>
-    <a
-      href="https://github.com/justinmahar/react-use-analytics-api"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <SvgIcon src={githubSvg} size={28} style={{ margin: "0 0 0 20px" }} />
+    <a href="https://github.com/justinmahar/react-use-analytics-api" target="_blank" rel="noopener noreferrer">
+      <SvgIcon src={githubSvg} size={28} style={{ margin: '0 0 0 20px' }} />
     </a>
   </div>
 </div>
+
+## ⛔️ DEPRECATION NOTICE: Google Analytics 4 is replacing Universal Analytics, making this library obsolete. After July 1, 2023 all standard Universal Analytics properties will stop processing new hits. [Read more here](https://support.google.com/analytics/answer/10759417?utm_campaign=2022-q4-gbl-all-gafree&utm_source=google-growth&utm_medium=email&utm_content=ga-sunset-msa-reminder-read).
 
 **React hook for loading the [Google Analytics Embed API](https://ga-dev-tools.appspot.com/embed-api/).**
 
@@ -78,7 +78,7 @@ npm i react-use-analytics-api
 To load the Google Analytics Embed API, use the [`useAnalyticsApi`](/useAnalyticsApi) hook:
 
 ```jsx
-import { useAnalyticsApi } from "react-use-analytics-api";
+import { useAnalyticsApi } from 'react-use-analytics-api';
 ```
 
 Then in your function component:
