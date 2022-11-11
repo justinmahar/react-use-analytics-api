@@ -1,6 +1,6 @@
 {
   "name": "react-use-analytics-api",
-  "version": "1.4.17",
+  "version": "1.4.18",
   "author": "Justin Mahar <contact@justinmahar.com>",
   "description": "[⛔️ DEPRECATED] React hook for loading the Google Analytics Embed API.",
   "homepage": "https://justinmahar.github.io/react-use-analytics-api/",
